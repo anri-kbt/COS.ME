@@ -1,24 +1,32 @@
-# README
+# COS.ME(コスドットミー)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+自分の持っているコスメを可視化・整理できるコスメボックスをスマホの中に。
+1つ1つのコスメはレビュー機能で評価、コメント、写真をつけて保存可能。公開／非公開を選べて他のユーザーとも繋がることができる。
+更に、今日使ったコスメを記録しておくことで、友達から褒められたメイク、写真を見返して盛れてる！と思った日にしていたメイクをカレンダーで振り返ってチェックできる。
 
-Things you may want to cover:
+### テーマを選んだ理由
+・コスメが増えると整理が難しい
+・なんだかいつも同じメイクになりがち、他のメイクも挑戦したい
+・あの日のメイク何使ったんだっけ？と後から分からなくなる
+・自分なりのコスメに対するレビューを残して整理したい
+・自分のコスメ全部見られるのは恥ずかしいけど、一部なら他の人にも共有したい
+このような悩みを解決したいと思い、開発しようと思い至りました。
 
-* Ruby version
+### ターゲットユーザ
+コスメ好きな方、たくさん持っているコスメの整理をしたい方、他のレビューサイトだと投稿しづらい方。
 
-* System dependencies
+### 主な利用シーン
+毎日のメイクの記録をしたり、コスメのレビューを保存できる。
 
-* Configuration
+## 設計書
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
