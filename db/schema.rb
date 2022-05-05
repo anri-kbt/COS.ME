@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_05_050855) do
+ActiveRecord::Schema.define(version: 2022_05_05_133338) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,48 @@ ActiveRecord::Schema.define(version: 2022_05_05_050855) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string "brand_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "calendars", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "cosmetic_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cosme_comments", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "cosmetic_id"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cosmetics", force: :cascade do |t|
+    t.integer "brand_id"
+    t.integer "customer_id"
+    t.integer "category_id"
+    t.integer "calendar_id"
+    t.string "cosmetic_name"
+    t.integer "price"
+    t.text "introduction"
+    t.boolean "is_public", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
