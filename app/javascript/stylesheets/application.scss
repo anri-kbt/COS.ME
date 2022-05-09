@@ -1,2 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+.navbar {
+  background-color: #BE8A62;
+  background-image: none;
+}
+footer {
+  background-color: #BE8A62;
+}
+footer .p{
+  color: white;
+}
+.title{
+  margin: 2rem auto;
+  text-align: center;
+}
