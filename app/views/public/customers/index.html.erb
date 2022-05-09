@@ -1,2 +1,21 @@
-<h1>Public::Customers#index</h1>
-<p>Find me in app/views/public/customers/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>My Room</h3>
+    </div>
+  </div>
+  <dov class="row">
+    <div class="room-box">
+      <div class="room-item">
+        <%= link_to 'My cosmetics',cosmetics_path %>
+      </div>
+      <div class="room-item">
+        Calendar
+        <%#= link_to 'Calendar' %>
+      </div>
+      <div class="room-item">
+        <%= link_to 'Me',customer_path(current_customer.id) %>
+      </div>
+    </div>
+  </dov>
+</div>

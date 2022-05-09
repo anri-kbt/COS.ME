@@ -1,2 +1,81 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>ME</h3>
+    </div>
+  </div>
+    <div class="col-1"></div>
+    <div class="col-11">
+      <h5 class="pb-5 mt-3">
+        <span class="midashi px-3">会員情報編集</span>
+      </h5>
+    </div>
+
+    <%= form_with model:@customer, url: customer_path(@customer),local:true do |f| %>
+      <div class="form-group row">
+        <div class="col-1">
+        </div>
+        <div class="col-3">
+          <%= f.label :氏名 %>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :last_name %>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :first_name %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-1">
+        </div>
+        <div class="col-3">
+          <%= f.label :フリガナ %>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :last_name_kana %>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :first_name_kana %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-1">
+        </div>
+        <div class="col-3">
+          <%= f.label :電話番号 %>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :call_number %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-1">
+        </div>
+        <div class="col-3">
+          <%= f.label :メールアドレス %>
+        </div>
+        <div class="col-4">
+          <%= f.email_field :email %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-4">
+        </div>
+        <div class="col-5">
+        </div>
+        <div class="col-3">
+          <%=link_to"退会する",out_path(@customer), method: :patch,"data-confirm"=>"本当に退会しますか？" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-4">
+        </div>
+        <div class="col-5">
+          <%= f.submit" 編集内容を保存 " %>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,2 +1,82 @@
-<h1>Public::Cosmetics#new</h1>
-<p>Find me in app/views/public/cosmetics/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>NEW COSMETIC</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto pb-5">
+      <%= form_with model:@cosmetic,url:cosmetics_path,method: :post,local:true do |f| %>
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label コスメ画像 ,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.file_field :cosmetic_image%>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :ブランド,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.collection_select(:brand_id, @brands, :id, :brand_name, {prompt: "--選択してください--"})%>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :商品名,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.text_field :cosmetic_name,:placeholder=>"商品名",size:30%>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :カテゴリー名,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.collection_select(:category_id, @categories, :id, :category_name, {prompt: "--選択してください--"})%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :メモ,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.text_area :introduction,:placeholder=>"コスメに対してのメモを残せます",size:"30x5"%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :購入価格,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.text_field :price,:placeholder=>"1000",size:30%>円
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :公開／非公開,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.radio_button :is_public, true%>みんなに公開  <%= f.radio_button :is_active, false%>自分だけ公開
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <%= f.submit "  新規登録  "%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

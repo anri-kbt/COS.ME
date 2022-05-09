@@ -1,5 +1,6 @@
 class Public::CosmeticsController < ApplicationController
   def new
+    @cosmeticS = Cosmetics.all
   end
 
   def index

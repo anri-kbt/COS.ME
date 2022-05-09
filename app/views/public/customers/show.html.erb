@@ -1,2 +1,37 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>ME</h3>
+    </div>
+  </div>
+  <div class='row form-group'>
+    <h4>
+      <span class="px-3">登録情報</span>
+    </h4>
+    <%= link_to edit_customer_path(current_customer) do %>
+      <i class="fas fa-pen-to-square"></i>
+    <% end %>
+  </div>
+  <div class="row">
+    <table class="table table-bordered col-10">
+      <tbody>
+        <tr>
+          <td width="150" class="bg-light">氏名</td>
+          <td width="200"><%= @customer.last_name %> <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <td scope="col" class="bg-light">カナ</td>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td scope="col" class="bg-light">電話番号</td>
+          <td><%= @customer.call_number %></td>
+        </tr>
+        <tr>
+          <td scope="col" class="bg-light">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
