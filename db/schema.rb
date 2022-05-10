@@ -89,7 +89,8 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
     t.string "cosmetic_name"
     t.integer "price"
     t.text "introduction"
-    t.boolean "is_public", default: true
+    t.integer "public_status", default: 0, null: false
+    t.float "evaluation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

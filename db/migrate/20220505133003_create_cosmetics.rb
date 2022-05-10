@@ -8,7 +8,8 @@ class CreateCosmetics < ActiveRecord::Migration[6.1]
       t.string :cosmetic_name
       t.integer :price
       t.text :introduction
-      t.boolean :is_public ,default:true
+      t.integer :public_status ,default:0, null: false
+      t.float :evaluation, null: false
 
       t.timestamps
     end

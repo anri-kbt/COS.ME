@@ -6,25 +6,27 @@
   </div>
   <div class="row">
     <div class="col-6 mx-auto pb-5">
-      <%= form_with model:@cosmetic,url:cosmetics_path,method: :post,local:true do |f| %>
+      <%= form_with model: @cosmetic,url:cosmetics_path,method: :post,local:true do |f| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= f.label コスメ画像 ,class:"pl-3"%>
+            <%= f.label :コスメ画像 ,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= f.file_field :cosmetic_image%>
+            <%= f.file_field :cosmetic_image %>
           </div>
         </div>
-        
+
+        <%= f.fields_for :brand, @cosmetic.build_brand do |i| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= f.label :ブランド,class:"pl-3"%>
+            <%= i.label :ブランド名,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= f.collection_select(:brand_id, @brands, :id, :brand_name, {prompt: "--選択してください--"})%>
+            <%= i.select :brand_name,[["Dior","Dior"],["DECORTE","DECORTE"],["CEZANNE","CEZANNE"],["EXCEL","EXCEL"],["SUQQU","SUQQU"]],include_blank: "--選択してください--" %>
           </div>
         </div>
-        
+        <% end %>
+
         <div class="form-group row">
           <div class="col-4">
             <%= f.label :商品名,class:"pl-3"%>
@@ -33,15 +35,17 @@
             <%= f.text_field :cosmetic_name,:placeholder=>"商品名",size:30%>
           </div>
         </div>
-        
+
+        <%= f.fields_for :category, @cosmetic.build_category do |i| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= f.label :カテゴリー名,class:"pl-3"%>
+            <%= i.label :カテゴリー名,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= f.collection_select(:category_id, @categories, :id, :category_name, {prompt: "--選択してください--"})%>
+            <%= i.select :category_name, [["下地","下地"],["ファンデーション","ファンデーション"],["コンシーラー","コンシーラー"],["アイブロウ","アイブロウ"],["マスカラ","マスカラ"],["アイシャドウ","アイシャドウ"],["チーク","チーク"],["リップ","リップ"]],include_blank: "--選択してください--" %>
           </div>
         </div>
+        <% end %>
 
         <div class="form-group row">
           <div class="col-4">
@@ -63,10 +67,20 @@
 
         <div class="form-group row">
           <div class="col-4">
-            <%= f.label :公開／非公開,class:"pl-3"%>
+            <%= f.label :総合評価,class:"pl-3"%>
+            <%= f.hidden_field :evaluation, id: :review_star %>
           </div>
           <div class="col-8">
-            <%= f.radio_button :is_public, true%>みんなに公開  <%= f.radio_button :is_active, false%>自分だけ公開
+            <%= render "static_rate", cosmetic:@cosmetic %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :公開／非公開 ,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.radio_button :public_status, Cosmetic.public_statuses.key(0) %>みんなに公開  <%= f.radio_button :public_status,  Cosmetic.public_statuses.key(1) %>自分だけの記録用
           </div>
         </div>
 
