@@ -11,8 +11,13 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = current_customer
+    if customer == current_customer
+      render :edit
+    else
+      redirect_to root_path
+    end
   end
-  
+
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -21,7 +26,7 @@ class Public::CustomersController < ApplicationController
       render "show"
     end
   end
-  
+
   def withdrawal
     @customer = current_customer
   end

@@ -39,9 +39,9 @@
             <tr>
               <% if current_customer==@cosmetic.customer %>
                 <td class="col-3">公開／非公開</td>
-                <%if @cosmetic.public_status==0%>
+                <% if @cosmetic.public_status_public? %>
                   <td class="text-muted font-weight-bold">みんなに公開中</td>
-                <%else @cosmetic.public_status==1%>
+                <% else  @cosmetic.public_status_private? %>
                   <td class="text-success font-weight-bold">自分だけ公開中</td>
                 <%end%>
               <% else %>

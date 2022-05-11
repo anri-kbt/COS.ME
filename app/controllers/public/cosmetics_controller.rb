@@ -24,11 +24,15 @@ class Public::CosmeticsController < ApplicationController
 
   def edit
     @cosmetic = Cosmetic.find(params[:id])
+    if @cosmetic.customer==current_customer
+      render :edit
+    else
+      redirect_to cosmetics_path
+    end
   end
 
   def update
-    pp user_params  #ここを追加
-    @cosmetic=Cosmetic.find(params[:id])
+    @cosmetic = Cosmetic.find(params[:id])
     if @cosmetic.update(cosmetic_params)
       redirect_to cosmetic_path(@cosmetic.id) ,notice: "商品情報を更新しました"
     else

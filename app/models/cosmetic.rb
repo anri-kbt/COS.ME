@@ -8,6 +8,14 @@ class Cosmetic < ApplicationRecord
   accepts_nested_attributes_for :category, allow_destroy: true
   has_one_attached :cosmetic_image
 
+  with_options presence: true do
+    validates :cosmetic_name
+    validates :cosmetic_image
+    validates :price
+    validates :introduction
+    validates :evaluation
+  end
+
   enum public_status: { public: 0, private: 1}, _prefix: true
 
   def get_image

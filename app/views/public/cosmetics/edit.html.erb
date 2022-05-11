@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-6 mx-auto pb-5">
-      <%= form_with model: @cosmetic,url:cosmetics_path,method: :post,local:true do |f| %>
+      <%= form_with model:@cosmetic,url:cosmetic_path,method: :patch,local:true do |f| %>
         <div class="form-group row">
           <div class="col-4">
             <%= f.label :コスメ画像 ,class:"pl-3"%>
@@ -22,7 +22,7 @@
             <%= i.label :ブランド名,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= i.select :brand_name,[["Dior","Dior"],["DECORTE","DECORTE"],["CEZANNE","CEZANNE"],["EXCEL","EXCEL"],["SUQQU","SUQQU"]],include_blank: "--選択してください--" %>
+            <%= i.select :brand_name,[["Dior","Dior"],["DECORTE","DECORTE"],["CEZANNE","CEZANNE"],["EXCEL","EXCEL"],["SUQQU","SUQQU"]],include_blank: "--選択してください--", :selected=>@cosmetic.brand.brand_name %>
           </div>
         </div>
         <% end %>
