@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "public/cosmetics", :media => "all" %>
+
 <div class="container">
   <div class="row">
     <div class="title">
@@ -70,8 +72,32 @@
             <%= f.label :総合評価,class:"pl-3"%>
             <%= f.hidden_field :evaluation, id: :review_star %>
           </div>
+
           <div class="col-8">
-            <%= render "static_rate", cosmetic:@cosmetic %>
+          <% if @cosmetic.id === nil %>
+            <div class="field-group" id="star">
+              <%= f.label :evaluation, 'Rate' %>
+              <%= f.hidden_field :evaluation, id: :review_star, class:'form-control' %>
+            </div>
+            <!-- 評価javascript -->
+            <script>
+              $(document).on('turbolinks:load', function() {
+                $('#star').empty();
+                $('#star').raty({
+                  size   :36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn: '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  scoreName: 'cosmetic[evaluation]',　//cosmeticモデルのevaluationカラムに保存
+                  half: true,  //星半分を許可する、DBには0.5谷の数値が保存される
+                });
+              })
+            </script>
+          <% else %>
+              <div class="form-group">
+                <%= render "static_rate", cosmetic: @cosmetic %>
+              </div>
+          <% end %>
           </div>
         </div>
 
