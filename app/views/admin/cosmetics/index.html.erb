@@ -3,21 +3,25 @@
 <div class="container py-5">
   <div class="row">
     <div class="title">
-      <h3>CUSTOMER'S COSMETICS</h3>
+      <h3>COSMETICS</h3>
     </div>
   </div>
 </div>
+<div class="link">
+  <%= link_to "新規投稿" ,new_cosmetic_path %>
+</div>
+<% if @cosmetics.public_status_public %> <!--public_statusが公開の投稿のみ-->
   <div class="cosmetic-box">
     <% @cosmetics.each do |cosmetic| %>
       <div class="cosmetic-container">
-        <%= link_to admin_cosmetic_path(cosmetic.id) do %>
+        <%= link_to cosmetic_path(cosmetic.id) do %>
           <%= image_tag cosmetic.cosmetic_image ,size:'170x100' %>
         <% end %>
         <div class="cosmetic-body">
           <div class="row">
             <div class="col-10">
               <p class="cosmetic-name">
-                <%= link_to(admin_cosmetic_path(cosmetic.id)) do %>
+                <%= link_to(cosmetic_path(cosmetic.id)) do %>
                   <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
                 <% end %>
               </p>
@@ -28,19 +32,20 @@
           </div>
         </div>
       </div>
+    <% end %>
   </div>
-
+<% else @cosmetics.public_status_private %> <!--public_statusが非公開の投稿のみ-->
   <div class="cosmetic-box">
     <% @cosmetics.each do |cosmetic| %>
       <div class="cosmetic-container">
-      <%= link_to admin_cosmetic_path(cosmetic.id) do %>
+      <%= link_to cosmetic_path(cosmetic.id) do %>
         <%= image_tag cosmetic.cosmetic_image, class:"img-top"; %>
       <% end %>
       <div class="body">
         <div class="row">
           <div class="col-10">
             <p class="cosmetic-name">
-              <%= link_to(admin_cosmetic_path(cosmetic.id)) do %>
+              <%= link_to(cosmetic_path(cosmetic.id)) do %>
                 <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
               <% end %>
             </p>
@@ -50,6 +55,7 @@
           </div>
         </div>
       </div>
+    <% end %>
   </div>
 <%#= paginate cosmetics %>
 </div>

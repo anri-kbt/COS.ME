@@ -1,2 +1,69 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<%=render"layouts/errors",obj: @customer%>
+<div class="container">
+    <div class="row">
+        <h5 class="pb-4 mt-5">
+            <span><%=@customer.full_name%>さんの会員情報編集</span>
+        </h5>
+    </div>
+
+    <%=form_with model: @customer,url:admin_customer_path,method: :patch,local:true do |f|%>
+        <div class="form-group row">
+          <div class="col-5">
+            <%=f.label :氏名%>
+          </div>
+          <div class="col-3">
+            <%=f.text_field :last_name%>
+          </div>
+          <div class="col-3">
+            <%=f.text_field :first_name%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <%=f.label :フリガナ%>
+          </div>
+          <div class="col-3">
+            <%=f.text_field :last_name_kana%>
+          </div>
+          <div class="col-3">
+            <%=f.text_field :first_name_kana%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <%=f.label :電話番号%>
+          </div>
+          <div class="col-7">
+            <%=f.text_field :call_number%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <%= f.label :メールアドレス %>
+          </div>
+          <div class="col-7">
+            <%= f.email_field :email, autocomplete: "email"%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <%= f.label :会員ステータス%>
+          </div>
+          <div class="col-7">
+            <%= f.radio_button :is_deleted, false%>有効  <%= f.radio_button :is_deleted, true%>退会
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5"></div>
+          <div class="col-7">
+            <%= f.submit "  変更を保存  " ,class:"btn btn-success"%>
+          </div>
+        </div>
+    <% end %>
+</div>
+

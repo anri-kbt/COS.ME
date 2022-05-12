@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers ,only:[:index,:edit,:show,:update,:destroy]
-    resource :cosmetics ,only:[:destroy]
+    resource :cosmetics ,only:[:index,:show,:destroy]
     resource :cosme_comments ,only:[:destroy]
   end
   scope module: :public do
