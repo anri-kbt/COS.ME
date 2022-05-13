@@ -47,16 +47,18 @@
               <% else %>
               <% end %>
             </tr>
+            <tr>
+              <% if current_customer==@cosmetic.customer %>
+                <td class="col-3"></td>
+                <td class="col-6">
+                  <%=link_to"編集する",edit_cosmetic_path(@cosmetic.id)%>
+                  <%=link_to"削除する",cosmetic_path(@cosmetic.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
+                </td>
+              <% else %>
+              <% end %>
+            </tr>
         </tbody>
       </table>
       </div>
-    </div>
-    <div class="row">
-      <% if current_customer==@cosmetic.customer %>
-      <div class="mx-auto">
-        <%=link_to"編集する",edit_cosmetic_path(@cosmetic.id)%>
-      </div>
-      <% else %>
-      <% end %>
     </div>
 </div>

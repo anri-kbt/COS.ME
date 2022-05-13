@@ -40,6 +40,12 @@ class Public::CosmeticsController < ApplicationController
     end
   end
 
+  def destroy
+    @cosmetic.find(params[:id])
+    @cosmetic.destroy
+    redirect_to cosmetics_path
+  end
+
   private
   def cosmetic_params
     params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation, brand_attributes: [:id, :brand_name,:_destroy],category_attributes: [:id, :category_name,:_destroy])

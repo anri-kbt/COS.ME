@@ -3,7 +3,10 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :cosmetics
+  has_many :cosmetics, dependent: :destroy
+  has_many :cosme_comments, dependent: :destroy
+  
+  has_one_attached :profile_image
 
   with_options presence: true do
     validates :first_name

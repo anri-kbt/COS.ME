@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers ,only:[:index,:edit,:show,:update,:destroy]
-    resource :cosmetics ,only:[:index,:show,:destroy]
+    resources :cosmetics ,only:[:index,:show,:destroy]
     resource :cosme_comments ,only:[:destroy]
   end
   scope module: :public do
@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
     root :to =>"homes#top"
     get 'homes/about'
-    resources :cosmetics
+    resources :cosmetics do
+      resources :cosme_comments, only: [:create]
+    end
     resource :categories ,only:[:index]
     resource :brands ,only:[:index]
     resources :calendars
