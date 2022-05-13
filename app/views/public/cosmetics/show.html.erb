@@ -47,6 +47,23 @@
               <% else %>
               <% end %>
             </tr>
+
+            <tr>
+              <td class="col-3">
+                <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
+                <% @cosmetic.cosme_comments.each do |cosme_comment| %>
+                  <p><%#= image_tag cosme_comment.customer.get_profile_image(100,100) %></p>
+                  <%= cosme_comment.customer.name %>
+                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %><%= cosme_comment.comment %>
+                <% end %>
+              </td>
+              <td class="col-6">
+                <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
+                  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                  <%= f.submit "送信する" %>
+                <% end %>
+            </tr>
+
             <tr>
               <% if current_customer==@cosmetic.customer %>
                 <td class="col-3"></td>

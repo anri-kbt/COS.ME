@@ -20,6 +20,7 @@ class Public::CosmeticsController < ApplicationController
 
   def show
     @cosmetic = Cosmetic.find(params[:id])
+    @cosme_comment = CosmeComment.new
   end
 
   def edit
