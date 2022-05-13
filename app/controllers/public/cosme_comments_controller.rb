@@ -1,7 +1,7 @@
 class Public::CosmeCommentsController < ApplicationController
 
   def create
-    cosmetic = Cosmetic.find(params[:id])
+    cosmetic = Cosmetic.find(params[:cosmetic_id])
     comment = current_customer.cosme_comments.new(cosme_comment_params)
     comment.cosmetic_id = cosmetic.id
     comment.save
@@ -10,6 +10,6 @@ class Public::CosmeCommentsController < ApplicationController
 
   private
   def cosme_comment_params
-    params.require(:cosmetic).permit(:comment)
+    params.require(:cosme_comment).permit(:comment)
   end
 end

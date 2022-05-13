@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = current_customer
-    if customer == current_customer
+    if @customer == current_customer
       render :edit
     else
       redirect_to root_path
@@ -41,6 +41,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:call_number,:email)
+    params.require(:customer).permit(:nickname,:user_id ,:call_number,:email)
   end
 end

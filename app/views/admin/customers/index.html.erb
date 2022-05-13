@@ -14,8 +14,8 @@
         <thead class="bg-light">
           <tr>
             <th scope="col">会員ID</th>
-            <th scope="col">氏名</th>
-            <th scope="col">メールアドレス</th>
+            <th scope="col">ニックネーム</th>
+            <th scope="col">ユーザーID</th>
             <th scope="col">ステータス</th>
           </tr>
         </thead>
@@ -24,9 +24,9 @@
           <tr>
             <td><%=customer.id%></td>
             <td style="text-decoration:underline;" >
-              <%=link_to customer.full_name,admin_customer_path(customer.id),class:"text-dark"%>
+              <%=link_to customer.nickname,admin_customer_path(customer.id),class:"text-dark"%>
             </td>
-            <td><%=customer.email%></td>
+            <td><%=customer.user_id %></td>
             <%if customer.is_deleted==false%>
               <td class="text-success font-weight-bold">有効</td>
             <%else%>

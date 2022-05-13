@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <h5 class="pb-4 mt-5">
-            <span class="midashi px-3"><%=@customer.full_name%>さんの会員詳細</span>
+            <span><%=@customer.nickname%>さんの会員詳細</span>
         </h5>
     </div>
 
@@ -12,12 +12,12 @@
                 <td><%=@customer.id%></td>
             </tr>
             <tr>
-                <td>氏名</td>
-                <td><%=@customer.last_name%> <%=@customer.first_name%></td>
+                <td>ニックネーム</td>
+                <td><%=@customer.nickname%></td>
             </tr>
             <tr>
-                <td>フリガナ</td>
-                <td><%=@customer.last_name_kana%> <%=@customer.first_name_kana%></td>
+                <td>ユーザーID</td>
+                <td><%=@customer.user_id %></td>
             </tr>
             <tr>
                 <td>電話番号</td>

@@ -7,7 +7,7 @@
     <div class="col-1"></div>
     <div class="col-11">
       <h5 class="pb-5 mt-3">
-        <span class="midashi px-3">会員情報編集</span>
+        <span class="midashi px-3">ME情報編集</span>
       </h5>
     </div>
 
@@ -16,13 +16,10 @@
         <div class="col-1">
         </div>
         <div class="col-3">
-          <%= f.label :氏名 %>
+          <%= f.label :ニックネーム %>
         </div>
         <div class="col-4">
-          <%= f.text_field :last_name %>
-        </div>
-        <div class="col-3">
-          <%= f.text_field :first_name %>
+          <%= f.text_field :nickname %>
         </div>
       </div>
 
@@ -30,13 +27,10 @@
         <div class="col-1">
         </div>
         <div class="col-3">
-          <%= f.label :フリガナ %>
+          <%= f.label :ユーザーID %>
         </div>
         <div class="col-4">
-          <%= f.text_field :last_name_kana %>
-        </div>
-        <div class="col-3">
-          <%= f.text_field :first_name_kana %>
+          <%= f.text_field :user_id %>
         </div>
       </div>
 

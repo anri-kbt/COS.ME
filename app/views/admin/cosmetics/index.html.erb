@@ -12,7 +12,7 @@
     <% @cosmetics.each do |cosmetic| %>
       <div class="cosmetic-container">
         <%= link_to admin_cosmetic_path(cosmetic.id) do %>
-          <%= image_tag cosmetic.cosmetic_image ,size:'170x100' %>
+          <%= image_tag cosmetic.cosmetic_image ,size:'100x100' %>
         <% end %>
         <div class="cosmetic-body">
           <div class="row">
@@ -23,8 +23,8 @@
                 <% end %>
               </p>
               <p class="card-text">説明：<%= cosmetic.introduction %></p>
-              <!--span><i class="fas fa-user"></i> By <#%= post_image.user.name %> ｜ </span-->
-              <!--span><"%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span-->
+              <span><i class="fas fa-user"></i> By <%= cosmetic.customer.nickname %> ｜ </span>
+              <span><"%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
             </div>
           </div>
         </div>
