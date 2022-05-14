@@ -5,8 +5,6 @@ class Cosmetic < ApplicationRecord
   belongs_to :category
   has_many :cosme_comments, dependent: :destroy
 
-#  accepts_nested_attributes_for :brand, allow_destroy: true
-#  accepts_nested_attributes_for :category, allow_destroy: true
   has_one_attached :cosmetic_image
 
   with_options presence: true do

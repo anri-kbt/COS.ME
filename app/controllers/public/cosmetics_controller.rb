@@ -4,7 +4,6 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def create
-    byebug
     @cosmetic = Cosmetic.new(cosmetic_params)
     @cosmetic.customer_id = current_customer.id
     if @cosmetic.save!
@@ -22,6 +21,12 @@ class Public::CosmeticsController < ApplicationController
   def index
     @customer = current_customer
     @cosmetics = Cosmetic.where(params[:category_id]).order(created_at: :desc)
+    @categories = Category.all
+    if params[:category_id].present?
+      #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
+      @category = Category.find(params[:category_id])
+      @cosmetics = @category.cosmetics
+    end
   end
 
   def show

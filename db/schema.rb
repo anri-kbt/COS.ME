@@ -94,9 +94,9 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_cosmetics_on_brand_id", unique: true
-    t.index ["calendar_id"], name: "index_cosmetics_on_calendar_id", unique: true
+    t.index ["calendar_id"], name: "index_cosmetics_on_calendar_id"
     t.index ["category_id"], name: "index_cosmetics_on_category_id", unique: true
-    t.index ["customer_id"], name: "index_cosmetics_on_customer_id", unique: true
+    t.index ["customer_id"], name: "index_cosmetics_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
