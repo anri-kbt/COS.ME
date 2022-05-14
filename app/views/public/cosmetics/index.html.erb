@@ -11,8 +11,10 @@
   <%= link_to "新規投稿" ,new_cosmetic_path %>
 </div>
 
-<% if @cosmetics.public_status_public %> <!--public_statusが公開の投稿のみ-->
-  <div class="cosmetic-box">
+<%= link_to "category" , controller: "cosmetics", action: "index", category_id: 1 %>
+
+  <div class="category">ALL</div>
+    <div class="cosmetic-box">
     <% @cosmetics.each do |cosmetic| %>
       <div class="cosmetic-container">
         <%= link_to cosmetic_path(cosmetic.id) do %>
@@ -35,29 +37,7 @@
       </div>
     <% end %>
   </div>
-<% else @cosmetics.public_status_private %> <!--public_statusが非公開の投稿のみ-->
-  <div class="cosmetic-box">
-    <% @cosmetics.each do |cosmetic| %>
-      <div class="cosmetic-container">
-        <%= link_to cosmetic_path(cosmetic.id) do %>
-          <%= image_tag cosmetic.cosmetic_image, class:"img-top"; %>
-        <% end %>
-        <div class="body">
-          <div class="row">
-            <div class="col-10">
-              <p class="cosmetic-name">
-                <%= link_to cosmetic_path(cosmetic.id) do %>
-                  <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
-                <% end %>
-              </p>
-              <p class="card-text">説明：<%= cosmetic.introduction %></p>
-              <!--span><i class="fas fa-user"></i> By <#%= post_image.user.name %> ｜ </span-->
-              <!--span><"%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span-->
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+
+
   </div>
 <%#= paginate cosmetics %>
-<% end %>

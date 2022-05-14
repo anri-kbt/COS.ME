@@ -5,8 +5,8 @@ class Cosmetic < ApplicationRecord
   belongs_to :category
   has_many :cosme_comments, dependent: :destroy
 
-  accepts_nested_attributes_for :brand, allow_destroy: true
-  accepts_nested_attributes_for :category, allow_destroy: true
+#  accepts_nested_attributes_for :brand, allow_destroy: true
+#  accepts_nested_attributes_for :category, allow_destroy: true
   has_one_attached :cosmetic_image
 
   with_options presence: true do
@@ -18,6 +18,10 @@ class Cosmetic < ApplicationRecord
   end
 
   enum public_status: { public: 0, private: 1}, _prefix: true
+
+  def self.category
+    Cosmetic.where(category_id: @category )
+  end
 
   def get_image
     unless image.attached?

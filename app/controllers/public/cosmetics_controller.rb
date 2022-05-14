@@ -4,6 +4,7 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def create
+    byebug
     @cosmetic = Cosmetic.new(cosmetic_params)
     @cosmetic.customer_id = current_customer.id
     if @cosmetic.save!
@@ -13,9 +14,14 @@ class Public::CosmeticsController < ApplicationController
     end
   end
 
+  def category
+    @category = Cosmetic.find_by(category_id: params[:category_id])
+    @cosmetics = Cosmetic.category
+  end
+
   def index
-      # 投稿すべてを取得
-      @cosmetics = Cosmetic.all.order(created_at: :desc).all
+    @customer = current_customer
+    @cosmetics = Cosmetic.where(params[:category_id]).order(created_at: :desc)
   end
 
   def show
@@ -49,6 +55,6 @@ class Public::CosmeticsController < ApplicationController
 
   private
   def cosmetic_params
-    params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation, brand_attributes: [:id, :brand_name,:_destroy],category_attributes: [:id, :category_name,:_destroy])
+    params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation, :brand_id, :category_id)
   end
 end

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     root :to =>"homes#top"
     get 'homes/about'
-    resources :cosmetics do
+    resources :cosmetics, param: :id do
       resources :cosme_comments, only: [:create]
     end
     resource :categories ,only:[:index]
