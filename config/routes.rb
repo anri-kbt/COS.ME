@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     get 'homes/about'
     resources :cosmetics, param: :id do
       resources :cosme_comments, only: [:create,:destroy]
+      collection do
+        get 'search'
+      end
     end
     resource :categories ,only:[:index]
     resource :brands ,only:[:index]

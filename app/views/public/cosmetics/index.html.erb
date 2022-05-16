@@ -11,5 +11,6 @@
   <%= link_to "新規投稿" ,new_cosmetic_path %>
 </div>
 
-<%= render "index", cosmetics: @cosmetics, customer: @customer, categories: @categories %>
+<%= render "category", categories: @categories %>
+<%= render "index", cosmetics: @cosmetics, customer: @customer %>
 

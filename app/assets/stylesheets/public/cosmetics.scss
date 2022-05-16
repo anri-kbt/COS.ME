@@ -7,3 +7,21 @@
   text-align: center;
   margin: 10px auto;
 }
+.category{
+  list-style: none;
+  overflow: hidden;
+}
+.category-table{
+  width: 200px;
+  text-align: center;
+  background-color: #BE8A62;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  margin: 2px;
+}
+.category-table span{
+  text-decoration: none;
+  padding: 20px;
+  color: #fff;
+}

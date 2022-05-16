@@ -1,0 +1,17 @@
+<div>
+  <ul class="category">
+    <li class="category-table">
+      <span>
+        <%= link_to "ALL", cosmetics_path%>
+      </span>
+    </li>
+      <% categories.each do |category| %>
+      <li class="category-table">
+        <span>
+          <%= link_to category.category_name , cosmetics_path(category_id: category.id) %>
+          (<%= category.cosmetics.count %>)
+        </span>
+      </li>
+      <% end %>
+  </ul>
+</div>

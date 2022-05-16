@@ -19,4 +19,5 @@
     <%= @customer.cosmetics.count %>
   </div>
 </div>
-<%= render "public/cosmetics/index" , cosmetics: @cosmetics, customer: @customer, categories: @categories %>
+<%= render "public/cosmetics/category",categories: @categories %>
+<%= render "public/cosmetics/index" , cosmetics: @cosmetics, customer: @customer %>

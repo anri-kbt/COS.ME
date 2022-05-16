@@ -1,11 +1,21 @@
 class Public::CosmeticsController < ApplicationController
   def new
     @cosmetic = Cosmetic.new
+    #@brand = Brand.new
   end
 
   def create
     @cosmetic = Cosmetic.new(cosmetic_params)
     @cosmetic.customer_id = current_customer.id
+    brand_params_name = params['brand_name']
+    brand = Brand.find_by(brand_name: brand_params_name)
+    if brand.nil?
+      new_brand = Brand.new(brand_name: brand_params_name)
+      new_brand.save
+      @cosmetic.brand_id = new_brand.id
+    else
+      @cosmetic.brand_id = brand.id
+    end
     if @cosmetic.save!
        redirect_to cosmetics_path ,notice: "新しいコスメを投稿しました"
     else
@@ -20,7 +30,7 @@ class Public::CosmeticsController < ApplicationController
 
   def index
     @customer = current_customer
-    @cosmetics = Cosmetic.where(params[:category_id]).order(created_at: :desc)
+    @cosmetics = Cosmetic.all.order(created_at: :desc)
     @categories = Category.all
     if params[:category_id].present?
       #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
@@ -53,6 +63,15 @@ class Public::CosmeticsController < ApplicationController
     end
   end
 
+  def search
+    if params[:keyword].present?
+      @cosmetics = Cosmetic.where('cosmetic LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @cosmetics = Cosmetic.all
+    end
+  end
+
   def destroy
     @cosmetic.find(params[:id])
     @cosmetic.destroy
@@ -61,6 +80,10 @@ class Public::CosmeticsController < ApplicationController
 
   private
   def cosmetic_params
-    params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation,:brand_name,:brand_id,:category_id)
+    params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation,:category_id)
+  end
+
+  def brand_params
+    params.require(:cosmetic).permit(:brand_name)
   end
 end

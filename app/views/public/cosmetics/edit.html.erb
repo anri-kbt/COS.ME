@@ -16,6 +16,7 @@
           </div>
         </div>
 
+        <%= fields_for @brand do |brand| %>
         <div class="form-group row">
           <div class="col-4">
             <%= f.label :ブランド名,class:"pl-3"%>
@@ -24,6 +25,7 @@
             <%= f.text_field :brand_name,:placeholder=>"ブランド名" %>
           </div>
         </div>
+        <% end %>
 
         <div class="form-group row">
           <div class="col-4">

@@ -1,12 +1,3 @@
-<div class="category">
-  <tbody>
-    <%= link_to "ALL", cosmetics_path, class: "text-secondary"%>
-    <% categories.each do |category| %>
-      <%= link_to category.category_name , cosmetics_path(category_id: category.id), class: "text-secondary" %>
-        <span>(<%= category.cosmetics.count %>)</spna>
-    <% end %>
-  </tbody>
-</div>
 
   <div class="cosmetic-box">
     <% cosmetics.each do |cosmetic| %>

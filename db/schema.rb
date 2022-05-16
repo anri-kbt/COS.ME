@@ -87,16 +87,15 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
     t.integer "category_id"
     t.integer "calendar_id"
     t.string "cosmetic_name"
-    t.string "brand_name"
     t.integer "price"
     t.text "introduction"
     t.integer "public_status", default: 0, null: false
     t.float "evaluation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["brand_id"], name: "index_cosmetics_on_brand_id", unique: true
+    t.index ["brand_id"], name: "index_cosmetics_on_brand_id"
     t.index ["calendar_id"], name: "index_cosmetics_on_calendar_id"
-    t.index ["category_id"], name: "index_cosmetics_on_category_id", unique: true
+    t.index ["category_id"], name: "index_cosmetics_on_category_id"
     t.index ["customer_id"], name: "index_cosmetics_on_customer_id"
   end
 
