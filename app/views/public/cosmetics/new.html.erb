@@ -23,7 +23,7 @@
             <%= f.label :ブランド名,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= f.select :brand_id,Brand.all.map{|v| [v.brand_name, v.id]},include_blank: "--選択してください--" %>
+            <%= f.text_field :brand_name,:placeholder=>"ブランド名" %>
           </div>
         </div>
 

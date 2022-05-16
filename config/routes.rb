@@ -15,13 +15,14 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :customers ,only:[:index,:show,:edit,:update]
+    get 'customers/:id/mycosmetics' => 'customers#mycosmetics',as: :mycosmetics
     get 'customers/withdrawal' => 'customers#withdrawal'
     patch 'customers/out/:id' => 'customers#out',as: :out
 
     root :to =>"homes#top"
     get 'homes/about'
     resources :cosmetics, param: :id do
-      resources :cosme_comments, only: [:create]
+      resources :cosme_comments, only: [:create,:destroy]
     end
     resource :categories ,only:[:index]
     resource :brands ,only:[:index]

@@ -1,0 +1,36 @@
+<div class="category">
+  <tbody>
+    <%= link_to "ALL", cosmetics_path, class: "text-secondary"%>
+    <% categories.each do |category| %>
+      <%= link_to category.category_name , cosmetics_path(category_id: category.id), class: "text-secondary" %>
+        <span>(<%= category.cosmetics.count %>)</spna>
+    <% end %>
+  </tbody>
+</div>
+
+  <div class="cosmetic-box">
+    <% cosmetics.each do |cosmetic| %>
+      <div class="cosmetic-container">
+        <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
+        <span><%= cosmetic.customer.nickname %></span></br>
+        <%= link_to cosmetic_path(cosmetic.id) do %>
+          <%= image_tag cosmetic.cosmetic_image ,size:'100x100' %>
+        <% end %>
+        <div class="cosmetic-body">
+          <div class="row">
+            <div class="col-10">
+              <p class="cosmetic-name">
+                <%= link_to cosmetic_path(cosmetic.id) do %>
+                  <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
+                <% end %>
+              </p>
+              <p class="card-text">説明：<%= cosmetic.introduction %></p>
+              <span><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<%#= paginate cosmetics %>

@@ -6,6 +6,7 @@ class CreateCosmetics < ActiveRecord::Migration[6.1]
       t.references :category, foreign_key: true, index: { unique: true }
       t.references :calendar, foreign_key: true
       t.string :cosmetic_name
+      t.string :brand_name
       t.integer :price
       t.text :introduction
       t.integer :public_status ,default:0, null: false

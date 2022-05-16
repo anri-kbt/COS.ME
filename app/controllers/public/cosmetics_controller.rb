@@ -32,6 +32,7 @@ class Public::CosmeticsController < ApplicationController
   def show
     @cosmetic = Cosmetic.find(params[:id])
     @cosme_comment = CosmeComment.new
+    @cosme_comments=CosmeComment.all
   end
 
   def edit
@@ -60,6 +61,6 @@ class Public::CosmeticsController < ApplicationController
 
   private
   def cosmetic_params
-    params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation, :brand_id, :category_id)
+    params.require(:cosmetic).permit(:cosmetic_name,:cosmetic_image,:introduction,:price,:public_status,:evaluation,:brand_name,:brand_id,:category_id)
   end
 end

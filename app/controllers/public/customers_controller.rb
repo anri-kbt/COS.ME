@@ -27,6 +27,17 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def mycosmetics
+    @customer = current_customer
+    @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer).order("created_at DESC")
+    @categories = Category.all
+    if params[:category_id].present?
+      #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
+      @category = Category.find(params[:category_id])
+      @cosmetics = @category.cosmetics
+    end
+  end
+
   def withdrawal
     @customer = current_customer
   end

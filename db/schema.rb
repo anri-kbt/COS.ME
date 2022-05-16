@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
     t.integer "category_id"
     t.integer "calendar_id"
     t.string "cosmetic_name"
+    t.string "brand_name"
     t.integer "price"
     t.text "introduction"
     t.integer "public_status", default: 0, null: false

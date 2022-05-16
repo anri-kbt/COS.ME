@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "public/cosmetics", :media => "all" %>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="title">
+      <h3>MY COSMETICS</h3>
+    </div>
+  </div>
+</div>
+<div class="profile">
+  <div class="customer-image">
+    <%= image_tag @customer.get_profile_image(100,100) %>
+  </div>
+  <div class="customer-nickname">
+    <%= @customer.nickname %>
+  </div>
+  <div class="cosmetic-count">
+    <span>投稿数 :</span>
+    <%= @customer.cosmetics.count %>
+  </div>
+</div>
+<%= render "public/cosmetics/index" , cosmetics: @cosmetics, customer: @customer, categories: @categories %>

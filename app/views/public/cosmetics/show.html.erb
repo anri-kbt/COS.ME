@@ -51,16 +51,17 @@
             <tr>
               <td class="col-3">
                 <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
-                <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-                  <p><%#= image_tag cosme_comment.customer.get_profile_image(100,100) %></p>
-                  <%= cosme_comment.customer.name %>
-                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %><%= cosme_comment.comment %>
-                <% end %>
+
               </td>
               <td class="col-6">
                 <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
                   <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
                   <%= f.submit "送信する" %>
+                <% end %>
+                <% @cosmetic.cosme_comments.each do |cosme_comment| %>
+                  <p><%= image_tag cosme_comment.customer.get_profile_image(100,100) %></p>
+                  <%= cosme_comment.customer.nickname %>
+                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %><%= cosme_comment.comment %>
                 <% end %>
               </td>
             </tr>
@@ -76,6 +77,21 @@
               <% end %>
             </tr>
         </tbody>
+      </table>
+      <table class="table"><% @cosmetic.cosme_comments.each do |cosme_comment| %>
+        <tr>
+          <td>
+            <%= image_tag cosme_comment.customer.get_profile_image, size:"100x100" %><br>
+            <%= cosme_comment.customer.nickname %>
+          </td>
+          <td>
+            <%= cosme_comment.comment %>
+          </td>
+        </tr>
+          <% if cosme_comment.customer == current_user %>
+          <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
+        <% end %>
       </table>
       </div>
     </div>

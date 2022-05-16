@@ -16,16 +16,14 @@
           </div>
         </div>
 
-        <%= f.fields_for :brand, @cosmetic.build_brand do |i| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= i.label :ブランド名,class:"pl-3"%>
+            <%= f.label :ブランド名,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= i.select :brand_name,[["Dior","Dior"],["DECORTE","DECORTE"],["CEZANNE","CEZANNE"],["EXCEL","EXCEL"],["SUQQU","SUQQU"]],include_blank: "--選択してください--", :selected => i.object.brand_name %>
+            <%= f.text_field :brand_name,:placeholder=>"ブランド名" %>
           </div>
         </div>
-        <% end %>
 
         <div class="form-group row">
           <div class="col-4">
@@ -36,16 +34,14 @@
           </div>
         </div>
 
-        <%= f.fields_for :category, @cosmetic.build_category do |i| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= i.label :カテゴリー名,class:"pl-3"%>
+            <%= f.label :カテゴリー,class:"pl-3"%>
           </div>
           <div class="col-8">
-            <%= i.select :category_name, [["下地","下地"],["ファンデーション","ファンデーション"],["コンシーラー","コンシーラー"],["アイブロウ","アイブロウ"],["マスカラ","マスカラ"],["アイシャドウ","アイシャドウ"],["チーク","チーク"],["リップ","リップ"]],include_blank: "--選択してください--" %>
+            <%= f.select :category_id,Category.all.map{|v| [v.category_name, v.id]},include_blank: "--選択してください--" %>
           </div>
         </div>
-        <% end %>
 
         <div class="form-group row">
           <div class="col-4">

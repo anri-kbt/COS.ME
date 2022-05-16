@@ -15,6 +15,8 @@
   <div class="row">
     <table class="table table-bordered col-10">
       <tbody>
+          <div>プロフィール画像</div>
+          <div><%= image_tag @customer.get_profile_image(100,100) %></div>
         <tr>
           <td width="150" class="bg-light">ニックネーム</td>
           <td width="200"><%= @customer.nickname %></td>
