@@ -6,14 +6,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-main {
-  flex: 1;
-}
+
 .main-container {
       display: flex;
       flex-direction: column;
@@ -35,4 +28,8 @@ footer .p{
 .title{
   margin: 2rem auto;
   text-align: center;
+}
+.link{
+  text-decoration: none;
+  color: white ;
 }

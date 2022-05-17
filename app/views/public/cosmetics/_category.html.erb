@@ -1,17 +1,21 @@
-<div>
-  <ul class="category">
+<%= javascript_pack_tag 'category' %>
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<div class="category-box">
+  <ul class="category js-category">
     <li class="category-table">
       <span>
-        <%= link_to "ALL", cosmetics_path%>
+        <%= link_to "ALL", cosmetics_path ,class:"link" %>
       </span>
     </li>
-      <% categories.each do |category| %>
-      <li class="category-table">
-        <span>
-          <%= link_to category.category_name , cosmetics_path(category_id: category.id) %>
-          (<%= category.cosmetics.count %>)
-        </span>
-      </li>
-      <% end %>
+    <% categories.each do |category| %>
+    <li class="category-table">
+      <span>
+        <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
+        (<%= category.cosmetics.count %>)
+      </span>
+    </li>
+    <% end %>
   </ul>
 </div>
