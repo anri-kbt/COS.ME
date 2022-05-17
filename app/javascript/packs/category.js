@@ -31,21 +31,3 @@ $(function(){
   }
 
 });
-
-<script>
-//初期化
-const galleryThumbs = new Swiper('.tab-menu', {
-  spaceBetween: 20,
-  slidesPerView: 'auto',
-  freeMode: false,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true,
-});
-
-const galleryTop = new Swiper('.tab-contents', {
-  autoHeight: true,
-  thumbs: {
-    swiper: galleryThumbs
-  }
-});
-</script>

@@ -1,13 +1,9 @@
 // Place all the styles related to the public/cosmetics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.cosmetic-box{
-  display: flex;
-  width: 90%;
-  text-align: center;
-  margin: 10px auto;
-}
+
 .category-box{
+  width: 90%;
   overflow-x: scroll;
    -webkit-overflow-scrolling: touch;
    -ms-overflow-style: none;
@@ -33,12 +29,19 @@
   padding: 20px;
   color: #fff;
 }
+.cosmetic-box{
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  text-align: center;
+  margin: 10px auto;
+}
 .cosmetic-container{
-  margin: 2rem;
+  margin: 2vw;
 }
 .cosmetic-image {
   width: 30vh;
-  height: 30vh;
+  height: 20vw;
 }
 .cosmetic-image img{
   width: 100%;
