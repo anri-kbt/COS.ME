@@ -1,9 +1,9 @@
 class Cosmetic < ApplicationRecord
   belongs_to :customer
   belongs_to :brand
-  belongs_to :calendar ,optional: true
   belongs_to :category
   has_many :cosme_comments, dependent: :destroy
+  has_many :calendars ,dependent: :destroy
 
 
   has_one_attached :cosmetic_image

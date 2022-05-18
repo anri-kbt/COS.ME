@@ -1,3 +1,3 @@
 class Calendar < ApplicationRecord
-  has_many :cosmetics
+  belongs_to :cosmetic
 end

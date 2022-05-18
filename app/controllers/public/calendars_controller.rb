@@ -8,13 +8,15 @@ class Public::CalendarsController < ApplicationController
 
   def new
     @calendar=Calendar.new
-    @cosmetics=Cosmetic.where(customer_id: current_customer.id).all
+    @cosmetics=Cosmetic.where(customer_id: current_customer.id)
   end
 
   def create
+    binding.pry
     @calendar = Calendar.new(calendar_params)
     @cosmetic_ids=params[:calendar][:cosmetic_ids]
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
+    @calendar.customer_id = current_customer.id
     if @calendar.save!
         @cosmetic_ids.each do |cosmetic_id|
         cosmetic=Cosmetic.find(cosmetic_id.to_i)
@@ -32,6 +34,6 @@ class Public::CalendarsController < ApplicationController
   private
 
   def calendar_params
-    params.require(:calendar).permit(:used_date)
+    params.require(:calendar).permit(:used_date,:customer_id,cosmetic_ids:[])
   end
 end
