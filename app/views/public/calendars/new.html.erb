@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>SELECT MY COSMETIC</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto pb-5">
+      <%= form_with model: @calendar,url:calendars_path,method: :post,local:true do |f| %>
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.collection_check_boxes(:cosmetic_ids, @cosmetics, :id, :cosmetic_image ) do |cosmetic|%>
+              <div>
+                <%= cosmetic.label {cosmetic.check_box + cosmetic} %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <%= f.submit "カレンダー登録"%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

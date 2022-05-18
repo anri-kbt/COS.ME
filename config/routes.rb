@@ -22,14 +22,14 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get 'homes/about'
     resources :cosmetics, param: :id do
-      resources :cosme_comments, only: [:create,:destroy]
+      resources :cosme_comments, only:[:create,:destroy]
       collection do
         get 'search'
       end
     end
     resource :categories ,only:[:index]
     resource :brands ,only:[:index]
-    resources :calendars
+    resources :calendars ,only:[:new, :create, :index, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

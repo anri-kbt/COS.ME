@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
   create_table "calendars", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "cosmetic_id"
+    t.datetime "used_date"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false

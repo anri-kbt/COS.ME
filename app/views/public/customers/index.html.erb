@@ -10,8 +10,7 @@
         <%= link_to 'My cosmetics',mycosmetics_path(current_customer.id) %>
       </div>
       <div class="room-item">
-        Calendar
-        <%#= link_to 'Calendar' %>
+        <%= link_to 'Calendar' ,calendars_path(current_customer) %>
       </div>
       <div class="room-item">
         <%= link_to 'Me',customer_path(current_customer.id) %>

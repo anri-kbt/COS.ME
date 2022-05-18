@@ -10,8 +10,8 @@
         <%=image_tag @cosmetic.cosmetic_image,size:"350x250",class:"d-block mx-auto img-fluid w-75"%>
       </div>
       <div class="col-6">
-      <table class="table table-borderless">
-        <tbody>
+        <table class="table table-borderless">
+          <tbody>
             <tr>
                 <td class="col-3">ブランド名</td>
                 <td class="col-6"><%=@cosmetic.brand.brand_name %></td>
@@ -76,23 +76,26 @@
               <% else %>
               <% end %>
             </tr>
-        </tbody>
-      </table>
-      <table class="table"><% @cosmetic.cosme_comments.each do |cosme_comment| %>
-        <tr>
-          <td>
-            <%= image_tag cosme_comment.customer.get_profile_image, size:"100x100" %><br>
-            <%= cosme_comment.customer.nickname %>
-          </td>
-          <td>
-            <%= cosme_comment.comment %>
-          </td>
-        </tr>
+          </tbody>
+        </table>
+        <table class="table"><% @cosmetic.cosme_comments.each do |cosme_comment| %>
+          <tr>
+            <td>
+              <%= image_tag cosme_comment.customer.get_profile_image, size:"100x100" %><br>
+              <%= cosme_comment.customer.nickname %>
+            </td>
+            <td>
+              <%= cosme_comment.comment %>
+            </td>
+          </tr>
           <% if cosme_comment.customer == current_user %>
-          <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "btn btn-sm btn-danger"%></td>
+            <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %></td>
           <% end %>
         <% end %>
-      </table>
+        </table>
+          <tr>
+            <td><%= link_to "戻る", cosmetics_path , class: "link" %></td>
+          </tr>
       </div>
     </div>
 </div>
