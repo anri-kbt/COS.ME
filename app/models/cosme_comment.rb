@@ -1,4 +1,4 @@
 class CosmeComment < ApplicationRecord
-  belongs_to :cosmetics
+  belongs_to :cosmetic
   belongs_to :customer
 end

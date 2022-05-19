@@ -12,14 +12,14 @@ class Public::CalendarsController < ApplicationController
   end
 
   def create
-    binding.pry
     @calendar = Calendar.new(calendar_params)
-    @cosmetic_ids=params[:calendar][:cosmetic_ids]
+    @cosmetic_ids = params[:calendar][:cosmetic_ids]
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
     @calendar.customer_id = current_customer.id
+    @cosmetic_ids.shift
     if @calendar.save!
         @cosmetic_ids.each do |cosmetic_id|
-        cosmetic=Cosmetic.find(cosmetic_id.to_i)
+        cosmetic = Cosmetic.find(cosmetic_id.to_i)
         @calendar.cosmetics << cosmetic
       end
       redirect_to calendars_path,notice:"カレンダーを追加しました"

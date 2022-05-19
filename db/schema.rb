@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_080829) do
+ActiveRecord::Schema.define(version: 2022_05_19_000019) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
     t.string "brand_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "calendar_cosmes", force: :cascade do |t|
+    t.integer "cosmetic_id"
+    t.integer "calendar_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["calendar_id"], name: "index_calendar_cosmes_on_calendar_id"
+    t.index ["cosmetic_id"], name: "index_calendar_cosmes_on_cosmetic_id"
   end
 
   create_table "calendars", force: :cascade do |t|
@@ -116,6 +125,8 @@ ActiveRecord::Schema.define(version: 2022_05_09_080829) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "calendar_cosmes", "calendars"
+  add_foreign_key "calendar_cosmes", "cosmetics"
   add_foreign_key "calendars", "cosmetics"
   add_foreign_key "calendars", "customers"
   add_foreign_key "cosmetics", "brands"
