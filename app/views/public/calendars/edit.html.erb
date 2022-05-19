@@ -1,2 +1,37 @@
-<h1>Public::Calendars#edit</h1>
-<p>Find me in app/views/public/calendars/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>EDIT SELECT COSMETICS</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto pb-5">
+      <%= form_with model: @calendar,url:calendars_path,method: :patch,local:true do |f| %>
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :used_date, "使用日:" ,class:"pl-3" %>
+          </div>
+          <div class="col-8">
+            <%= f.date_field :used_date, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.collection_check_boxes(:cosmetic_ids, @cosmetics, :id, :cosmetic_image, { checked: @calendar.cosmetic_ids.map(&:to_param) }) do |b| %>
+              <div>
+                <%= b.label { b.check_box + image_tag(b.text.record.cosmetic_image,size:"80x80") } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <%= f.submit "カレンダー更新"%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

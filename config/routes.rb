@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-    resources :calendars ,only:[:new, :create, :index, :destroy]
+    resources :calendars ,only:[:new, :create, :edit, :index, :destroy]
     resource :categories ,only:[:index]
     resource :brands ,only:[:index]
   end
