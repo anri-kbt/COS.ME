@@ -24,4 +24,8 @@ class Cosmetic < ApplicationRecord
     Cosmetic.where(category_id: @category )
   end
 
+  def get_cosmetic_image
+    cosmetic_image
+  end
+
 end

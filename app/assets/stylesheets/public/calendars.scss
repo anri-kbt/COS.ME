@@ -1,3 +1,17 @@
 // Place all the styles related to the public/calendars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.calendar-row{
+  display: flex;
+  flex-flow: column;
+}
+.calendar-box{
+  margin: 2rem auto;
+  width: 90%;
+  height: 20vh;
+  vertical-align: top;
+}
+.calendar-box img{
+  object-fit: cover;
+  margin: 1rem;
+}

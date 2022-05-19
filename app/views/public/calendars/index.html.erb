@@ -1,13 +1,22 @@
-calendar_index
-<div class="calendar-box">
-  <% @calendars.each do |calendar| %>
-  <%= calendar.used_date %>
-    <% @cosmetics.each do |cosmetic| %>
-      <div>
-        <%= link_to cosmetic_path(cosmetic.id) do %>
-          <%=image_tag cosmetic.cosmetic_image %>
+<%= stylesheet_link_tag "public/calendars", :media => "all" %>
+
+<div class="container">
+  <div class="calendar-row">
+
+    <% @dates.each do |date| %>
+    <div class="calendar-box">
+    <%= date %>
+      <% @cosmetics.each do |cosmetic| %>
+        <% cosmetic.calendars.each do |calendar| %>
+          <% if calendar.used_date.strftime('%Y-%m-%d') == date.to_s %>
+            <%= link_to cosmetic_path(calendar.cosmetic_id) do %>
+              <%= image_tag cosmetic.cosmetic_image,size:"150x150" %>
+            <% end %>
+          <% end %>
         <% end %>
+      <% end %>
       </div>
     <% end %>
-  <% end %>
+
+  </div>
 </div>

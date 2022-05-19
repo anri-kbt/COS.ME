@@ -1,12 +1,10 @@
 class Public::CalendarsController < ApplicationController
   def index
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
-    @calendars = Calendar.all
-    #@cosmetics = params[:calendar][:cosmetic_ids]
-   # @today = Date.today
-    #from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
-    #to_date = Date.new(@today.year, @today.month, @today.end_of_month.day).end_of_week(:sunday)
-    #@calendar_data = from_date.upto(to_date)
+    #@calendars = Calendar.all
+    @dates = (Date.new(Date.today.year,Date.today.month, 1)...Date.new(Date.today.year,Date.today.month + 1, 1)).to_a
+    @cosmetics =current_customer.cosmetics
+
   end
 
   def new
@@ -20,11 +18,12 @@ class Public::CalendarsController < ApplicationController
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
     @calendar.customer_id = current_customer.id
     @cosmetic_ids.shift
-    if @calendar.save!
+
         @cosmetic_ids.each do |cosmetic_id|
         cosmetic = Cosmetic.find(cosmetic_id.to_i)
-        @calendar.cosmetics << cosmetic
-      end
+        @calendar.cosmetic_id = cosmetic_id
+       end
+    if @calendar.save!
       redirect_to calendars_path,notice:"カレンダーを追加しました"
     else
       redirect_to new_calendar_path,notice:"カレンダーを追加できませんでした"
