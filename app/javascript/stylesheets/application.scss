@@ -6,7 +6,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.flash{
+  .notice {
+   background-color: #ff8c00;
+   color: #fff;
+   text-align: center;
+ }
+}
 .main-container {
       display: flex;
       flex-direction: column;

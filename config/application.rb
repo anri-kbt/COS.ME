@@ -17,6 +17,14 @@ module COSME
     # in config/environments, which are processed later.
     #
     config.time_zone = 'Tokyo'
+    
+    # DB側から受け取った時刻をどのタイムゾーンとして解釈するか
+    config.active_record.default_timezone = :local 
+     # デフォルトは:enになっている
+    config.i18n.default_locale = :ja
+    # localeファイルの読み込み設定
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

@@ -1,5 +1,8 @@
 class Public::CalendarsController < ApplicationController
   def index
+    @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
+    @calendars = Calendar.all
+    #@cosmetics = params[:calendar][:cosmetic_ids]
    # @today = Date.today
     #from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
     #to_date = Date.new(@today.year, @today.month, @today.end_of_month.day).end_of_week(:sunday)

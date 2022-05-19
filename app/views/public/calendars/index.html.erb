@@ -1,1 +1,13 @@
 calendar_index
+<div class="calendar-box">
+  <% @calendars.each do |calendar| %>
+  <%= calendar.used_date %>
+    <% @cosmetics.each do |cosmetic| %>
+      <div>
+        <%= link_to cosmetic_path(cosmetic.id) do %>
+          <%=image_tag cosmetic.cosmetic_image %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

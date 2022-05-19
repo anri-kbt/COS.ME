@@ -18,12 +18,13 @@
 
         <div class="form-group row">
           <div class="col-4">
-            <%= f.collection_check_boxes(:cosmetic_ids, @cosmetics, :id, :cosmetic_image) do |cosmetic| %>
+            <%= f.collection_check_boxes(:cosmetic_ids, @cosmetics, :id, :cosmetic_image) %>
               <ul>
-                <%= cosmetic.check_box %>
-                <%= cosmetic %>
+                <%#= b.check_box %>
+                <%#= image_tag cosmetic_image %>
+                <%#= b.label { b.check_box + b.image_tag } %>
               </ul>
-            <% end %>
+            <%# end %>
           </div>
         </div>
         <div class="form-group row">

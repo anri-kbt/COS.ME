@@ -27,9 +27,9 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
+    resources :calendars ,only:[:new, :create, :index, :destroy]
     resource :categories ,only:[:index]
     resource :brands ,only:[:index]
-    resources :calendars ,only:[:new, :create, :index, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
