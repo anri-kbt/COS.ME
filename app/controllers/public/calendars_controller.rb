@@ -1,18 +1,12 @@
 class Public::CalendarsController < ApplicationController
   def index
+    @calendars = Calendar.all
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
     @dates = (Date.new(Date.today.year,Date.today.month, 1)...Date.new(Date.today.year,Date.today.month + 1, 1)).to_a
     @cosmetics = current_customer.cosmetics
-   # @months = (Date.new(Date.today.month,1)...Date.new(Date.today.month + 1, 1)).to_a
-    #@this_month = Date.today.month
-
-    #@month_1 = Date.today.beginning_of_year.month
-    #@month_12 = Date.today.end_of_year.month
-    search_date = params[:month]
-    @month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
     if params[:month].present?
-      @month_calendar = Calendar.find(params[:month])
-      @cosmetics = @category.cosmetics
+      search_date = params[:month]
+      @month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
     end
   end
 

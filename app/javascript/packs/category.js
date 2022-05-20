@@ -8,26 +8,19 @@ $(function(){
 
   //タブエリアの横幅指定
   $jsCategory.css('width',categoryLiWid * categoryLiLen + categoryLiWid );
-  
-  //スワイプイベント登録
-  $jsSwipe.hammer().on('swipeleft',next);  //--------C
-  $jsSwipe.hammer().on('swiperight',prev);
- 
-  function next() {
-    tabManager($(ACTIVE_SELECTOR).next('li'));
-  }
-  function prev() {
-    tabManager($(ACTIVE_SELECTOR).prev('li'));
-  }                                        //--------C
- 
-  // 指定されたタブをカレントし要素にスクロールする
-  function tabManager($nextTarget){
-    $nextTarget.find('a').trigger('click');  //--------D
- 
-    if($nextTarget.index() != -1){
-      $scrollContainer.scrollLeft($nextTarget.index() * tabsLiWid);  //--------E
-       
-    }
-  }
-
 });
+
+$('.cosmetic-box').hide();
+$('.cosmetic-box').first().slideDown();
+  $('.category-table span').click(function(){
+    var thisclass=$(this).attr('class');
+    $('#lamp').removeClass().addClass('#lamp').addClass(thisclass);
+    $('.cosmetic-container').each(function(){
+      if($(this).hasClass(thisclass)){
+        $(this).fadeIn(800);
+      }
+      else{
+        $(this).hide();
+      }
+    });
+  });

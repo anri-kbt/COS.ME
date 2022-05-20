@@ -9,6 +9,7 @@
     </li>
     <% categories.each do |category| %>
     <li class="category-table">
+      <div id='lamp' class='category-table'></div>
       <span>
         <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
         (<%= category.cosmetics.count %>)

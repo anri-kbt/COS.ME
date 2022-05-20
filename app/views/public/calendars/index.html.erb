@@ -16,7 +16,8 @@
   <% end %>
   <% e.each {|date|} %>
   </div>
-  <%= @month_calendar %>
+  <%# if @month_calendar.present?%>
+  <%# else @month_calendar.blank? %>
   <div class="calendar-row">
     <% @dates.each do |date| %>
     <div class="calendar-box">
@@ -39,6 +40,6 @@
       <% end %>
       </div>
     <% end %>
-
   </div>
+  <%# end %>
 </div>
