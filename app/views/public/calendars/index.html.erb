@@ -6,12 +6,15 @@
     <% @dates.each do |date| %>
     <div class="calendar-box">
       <%= date %>
-      <%= link_to new_calendar_path do %>
-        <i class="fa-thin fa-calendar-plus"></i>
-      <% end %>
-      <%= link_to edit_calendar_path(current_customer) do %>
-        <i class="fa-thin fa-pen"></i>
-      <% end %>
+      <%# if date.calendar.persisted? %>
+        <%= link_to new_calendar_path ,class:"link2" do %>
+          <i class="fas fa-calendar-plus"></i>
+        <% end %>
+      <%# else %>
+        <%= link_to edit_calendar_path(current_customer) ,class:"link2" do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      <%# end %>
       <% @cosmetics.each do |cosmetic| %>
         <% cosmetic.calendars.each do |calendar| %>
           <% if calendar.used_date.strftime('%Y-%m-%d') == date.to_s %>

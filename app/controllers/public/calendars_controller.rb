@@ -29,8 +29,13 @@ class Public::CalendarsController < ApplicationController
   end
 
   def edit
-    binding.pry
     @calendar = Calendar.find(params[:id])
+    @cosmetics=Cosmetic.where(customer_id: current_customer.id)
+  end
+
+  def update
+    @calendar = Calendar.find(params[:id]).update(calendar_params)
+    redirect_to calendars_path, notice:"カレンダーを更新しました"
   end
 
   private

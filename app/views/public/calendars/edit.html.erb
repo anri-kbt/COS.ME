@@ -13,6 +13,7 @@
           </div>
           <div class="col-8">
             <%= f.date_field :used_date, class: "form-control" %>
+            <%= Date.current.strftime('%Y/%m/%d') %>
           </div>
         </div>
 

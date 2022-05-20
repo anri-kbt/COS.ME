@@ -12,7 +12,7 @@
             <%= f.label :used_date, "使用日:" ,class:"pl-3" %>
           </div>
           <div class="col-8">
-            <%= f.date_field :used_date, class: "form-control" %>
+            <%= f.date_field :used_date, value: Date.today.strftime("%Y-%m-%d") %>
           </div>
         </div>
 
