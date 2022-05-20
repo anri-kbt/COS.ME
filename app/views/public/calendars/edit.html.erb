@@ -6,14 +6,13 @@
   </div>
   <div class="row">
     <div class="col-6 mx-auto pb-5">
-      <%= form_with model: @calendar,url:calendars_path,method: :patch,local:true do |f| %>
+      <%= form_with model: @calendar,url:calendar_path(@calendar),method: :patch,local:true do |f| %>
         <div class="form-group row">
           <div class="col-4">
             <%= f.label :used_date, "使用日:" ,class:"pl-3" %>
           </div>
           <div class="col-8">
             <%= f.date_field :used_date, class: "form-control" %>
-            <%= Date.current.strftime('%Y/%m/%d') %>
           </div>
         </div>
 

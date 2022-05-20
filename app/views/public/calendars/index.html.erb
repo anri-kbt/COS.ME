@@ -2,24 +2,37 @@
 
 <div class="container">
   <div class="calendar-row">
+  <% e = Enumerator.new do |yielder| %>
+    <% head = Date.today.beginning_of_year %>
+    <% tail = Date.today.end_of_year %>
 
+    <% while head <= tail %>
+      <% yielder << head %>
+      <% head = head.next_month %>
+      <%= link_to calendars_path(month: head.next_month) do %>
+        <%= head.next_month.month %><span>月</span>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% e.each {|date|} %>
+  </div>
+  <%= @month_calendar %>
+  <div class="calendar-row">
     <% @dates.each do |date| %>
     <div class="calendar-box">
       <%= date %>
-      <%# if date.calendar.persisted? %>
-        <%= link_to new_calendar_path ,class:"link2" do %>
-          <i class="fas fa-calendar-plus"></i>
-        <% end %>
-      <%# else %>
-        <%= link_to edit_calendar_path(current_customer) ,class:"link2" do %>
-          <i class="fas fa-pen"></i>
-        <% end %>
-      <%# end %>
       <% @cosmetics.each do |cosmetic| %>
         <% cosmetic.calendars.each do |calendar| %>
           <% if calendar.used_date.strftime('%Y-%m-%d') == date.to_s %>
             <%= link_to cosmetic_path(calendar.cosmetic_id) do %>
               <%= image_tag cosmetic.cosmetic_image,size:"150x150" %>
+            <% end %>
+            <%= link_to edit_calendar_path(calendar.id) ,class:"link2" do %>
+              <i class="fas fa-pen"></i>
+            <% end %>
+          <% else %>
+            <%= link_to new_calendar_path(used_date: date) ,class:"link2" do %>
+              <i class="fas fa-calendar-plus"></i>
             <% end %>
           <% end %>
         <% end %>
