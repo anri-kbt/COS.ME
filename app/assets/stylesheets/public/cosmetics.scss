@@ -38,10 +38,22 @@
 }
 .cosmetic-container{
   margin: 2vw;
+  width: 20vw;
+  height: 30vh;
+}
+.profile-image{
+  margin-bottom: 1vh;
+}
+.profile-image img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 30px;
+  height: 30px;
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
 }
 .cosmetic-image {
-  width: 30vh;
-  height: 20vw;
+  width: 10vw;
+  height: 15vh;
+  margin: 0 auto;
 }
 .cosmetic-image img{
   width: 100%;

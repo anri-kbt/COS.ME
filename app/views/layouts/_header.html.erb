@@ -27,7 +27,7 @@
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> logout
+              <i class="fas fa-sign-out-alt"></i> Log out
             <% end %>
           </li>
         <%elsif admin_signed_in?%>
@@ -55,12 +55,12 @@
         <% else %>
           <li>
             <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> sign up
+              <i class="fas fa-user-plus"></i> Sign up
             <% end %>
           </li>
           <li>
             <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> login
+              <i class="fas fa-sign-in-alt"></i> Log in
             <% end %>
           </li>
         <% end %>

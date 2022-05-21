@@ -59,9 +59,13 @@
                   <%= f.submit "送信する" %>
                 <% end %>
                 <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-                  <p><%= image_tag cosme_comment.customer.get_profile_image(100,100) %></p>
+                  <%= image_tag cosme_comment.customer.get_profile_image(50,50) %>
                   <%= cosme_comment.customer.nickname %>
-                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %><%= cosme_comment.comment %>
+                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
+                  <%= cosme_comment.comment %>
+                  <% if cosme_comment.customer == current_customer %>
+                    <%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %>
+                  <% end %>
                 <% end %>
               </td>
             </tr>
@@ -76,22 +80,10 @@
               <% else %>
               <% end %>
             </tr>
+            <% if @cosme_comment.customer == current_customer %>
+              <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %></td>
+            <% end %>
           </tbody>
-        </table>
-        <table class="table"><% @cosmetic.cosme_comments.each do |cosme_comment| %>
-          <tr>
-            <td>
-              <%= image_tag cosme_comment.customer.get_profile_image, size:"100x100" %><br>
-              <%= cosme_comment.customer.nickname %>
-            </td>
-            <td>
-              <%= cosme_comment.comment %>
-            </td>
-          </tr>
-          <% if cosme_comment.customer == current_user %>
-            <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %></td>
-          <% end %>
-        <% end %>
         </table>
           <tr>
             <td><%= link_to "戻る", cosmetics_path , class: "link" %></td>
@@ -99,3 +91,4 @@
       </div>
     </div>
 </div>
+

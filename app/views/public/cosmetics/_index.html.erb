@@ -1,8 +1,10 @@
   <div class="cosmetic-box">
     <% cosmetics.each do |cosmetic| %>
       <div class="cosmetic-container">
-        <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
-        <span><%= cosmetic.customer.nickname %></span></br>
+        <div class="profile-image">
+          <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
+          <span><%= cosmetic.customer.nickname %></span></br>
+        </div>
         <div class="cosmetic-image">
         <%= link_to cosmetic_path(cosmetic.id) do %>
           <%= image_tag cosmetic.cosmetic_image ,size:'100x100' %>
@@ -11,7 +13,7 @@
         <div class="cosmetic-body">
           <div class="cosmetic-row">
               <p class="cosmetic-name">
-                <%= link_to cosmetic_path(cosmetic.id),class:"link" do %>
+                <%= link_to cosmetic_path(cosmetic.id),class:"link2" do %>
                   <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
                 <% end %>
               </p>
