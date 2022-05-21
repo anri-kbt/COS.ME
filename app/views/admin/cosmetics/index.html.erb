@@ -24,7 +24,7 @@
               </p>
               <p class="card-text">説明：<%= cosmetic.introduction %></p>
               <span><i class="fas fa-user"></i> By <%= cosmetic.customer.nickname %> ｜ </span>
-              <span><"%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
+              <span><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
             </div>
           </div>
         </div>

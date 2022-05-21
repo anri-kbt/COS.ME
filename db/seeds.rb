@@ -9,3 +9,8 @@ Admin.create!(
   email: 'admin@admin',
   password: 'cos.me'
   )
+
+Category.create!(
+  category_name: "下地",
+  category_name: 'フェイスパウダー',
+  )

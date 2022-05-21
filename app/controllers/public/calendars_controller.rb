@@ -1,12 +1,37 @@
 class Public::CalendarsController < ApplicationController
   def index
-    @calendars = Calendar.all
+    @calendars = Calendar.where(customer_id: current_customer.id).includes(:customer)
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
+    #dt = params[:month].to_date
     @dates = (Date.new(Date.today.year,Date.today.month, 1)...Date.new(Date.today.year,Date.today.month + 1, 1)).to_a
-    @cosmetics = current_customer.cosmetics
+    #month = params[:month].to_date
+    #calendar = Calendar.where(used_date: month..month.end_of_month)
+    #その月に使ったcosmeticsのデータをすべて取ってくる
+    @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id)
+    @hash = Hash.new
+
+    #@month_cosme = Cosmetic.calendar.where(customer_id: current_customer.id)
+
+    #@datesを回して取ってきたcosmeticsのカレンダーのused_dateのデータが存在しているどうかをチェック
+
+    @dates.each do |d|
+      @calendar.each do |c|
+        if c.used_date.to_date == d
+          @hash[d] = c.cosmetics
+        end
+      end
+      #@used_cosme = @month_cosme.where(used_date: d)
+    end
+    #Hashを宣言する
+    #HashにDateのキーを用意する
+    #各日付のキーに対してcosmeticsが存在していればそのデータを、存在していなければ空の配列を入れる
+    #その内容を@変数でビューに渡す
+
     if params[:month].present?
-      search_date = params[:month]
-      @month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
+      dt = params[:month].to_date
+      @dates = (Date.new(dt.year,dt.month, 1)...Date.new(dt.year,dt.month + 1, 1)).to_a
+      #search_date = params[:month]
+      #@month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
     end
   end
 
