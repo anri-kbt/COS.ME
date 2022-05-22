@@ -18,7 +18,16 @@
   </div>
 
   <div class="calendar-row">
-    
+    <% @dates.each do |d| %>
+      <%= d %>
+      <% num=0 %>
+      <% @hash.each do |k| %>
+        <% if d == k[0] %>
+          <%= k[1][0].cosmetic_name %>
+          <% num+=1%>
+        <% end %>
+      <% end%>
+    <% end %>
   </div>
   <%# end %>
 </div>
