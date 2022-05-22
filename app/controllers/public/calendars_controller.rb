@@ -7,23 +7,26 @@ class Public::CalendarsController < ApplicationController
     #month = params[:month].to_date
     #calendar = Calendar.where(used_date: month..month.end_of_month)
     #@month_cosme = Cosmetic.calendar.where(customer_id: current_customer.id)
-
+   # @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id)
+    #@hash = Hash.new
+  
     #その月に使ったcosmeticsのデータをすべて取ってくる
-    @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id)
-    @hash = Hash.new
     #@datesを回して取ってきたcosmeticsのカレンダーのused_dateのデータが存在しているどうかをチェック
-    @dates.each do |d|
-      @calendar.each_with_index do |c,i|
-        if c.used_date.to_date == d
-          @hash[d] = c.cosmetics[i]
-        end
-      end
-    end
     #Hashを宣言する
     #HashにDateのキーを用意する
     #各日付のキーに対してcosmeticsが存在していればそのデータを、存在していなければ空の配列を入れる
     #その内容を@変数でビューに渡す
+  
+    #@dates.each do |d|
+     # @calendar.each do |c|
+      #  if c.used_date.to_date == d
+       #   @hash[d] = c.cosmetics
+      #  end
+      #  @hash[d] = '' if @hash[d].blank?
+    #  end
+  #  end
 
+    @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id).index_by { |e| e.used_date.strftime("%y-%m-%d") }
 
     if params[:month].present?
       dt = params[:month].to_date

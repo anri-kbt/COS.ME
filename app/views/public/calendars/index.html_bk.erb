@@ -30,12 +30,14 @@
   </div>
 
   <div>
-    <% @dates.each do |d| %> <!-- [date, cosmetic] -->
-      <%= d %><br>
-      <% next if @calendar[d.strftime("%y-%m-%d")].blank? %>
-      <% @calendar[d.strftime("%y-%m-%d")].cosmetics.each do |c| %>
-        <%= image_tag c.cosmetic_image %>
-      <% end %><br>
+    <% @hash.each do |hash| %> <!-- [date, cosmetic] -->
+      <%= hash.first %><br>
+      <% if hash.last.blank? %>
+      <% else %>
+        <% hash.last.each do |h| %>
+           <%= h.cosmetic_name %>
+        <% end %><br>
+      <% end %>
     <% end %>
   </div>
   <%# end %>
