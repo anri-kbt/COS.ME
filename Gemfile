@@ -60,6 +60,7 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'kaminari'
 gem 'devise-i18n'
+gem 'ransack'
 group :production do
   gem 'mysql2'
 end

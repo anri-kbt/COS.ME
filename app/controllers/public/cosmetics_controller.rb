@@ -64,7 +64,7 @@ class Public::CosmeticsController < ApplicationController
 
   def search
     if params[:keyword].present?
-      @cosmetics = Cosmetic.where('cosmetic LIKE ?', "%#{params[:keyword]}%")
+      @cosmetics = Cosmetic.where('cosmetic_name LIKE ?', "%#{params[:keyword]}%")
       @keyword = params[:keyword]
     else
       @cosmetics = Cosmetic.all

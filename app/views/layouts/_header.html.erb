@@ -9,10 +9,11 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li>
-            <i class="fal fa-search"></i>
             <%= form_with url: search_cosmetics_path, local: true, method: :get do |form| %>
-              <%= form.text_field :keyword%>
-              <%= form.submit "検索" %>
+              <%= form.text_field :keyword, placeholder: 'キーワードから探す'%>
+              <%= form.button :type => "submit" do %>
+                <i class="fas fa-search"></i>
+              <% end %>
             <% end %>
           </li>
           <li>

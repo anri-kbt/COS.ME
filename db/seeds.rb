@@ -20,7 +20,7 @@ Category.create!(
   category_name: 'フェイスパウダー',
  )
 Category.create!(
-  category_name: 'コンシーラー／ハイライト',
+  category_name: 'コンシーラー',
  )
 Category.create!(
   category_name: 'アイブロウ',
