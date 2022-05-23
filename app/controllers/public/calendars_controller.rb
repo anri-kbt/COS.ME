@@ -9,6 +9,8 @@ class Public::CalendarsController < ApplicationController
     #@month_cosme = Cosmetic.calendar.where(customer_id: current_customer.id)
    # @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id)
     #@hash = Hash.new
+    #search_date = params[:month]
+    #@month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
   
     #その月に使ったcosmeticsのデータをすべて取ってくる
     #@datesを回して取ってきたcosmeticsのカレンダーのused_dateのデータが存在しているどうかをチェック
@@ -31,8 +33,7 @@ class Public::CalendarsController < ApplicationController
     if params[:month].present?
       dt = params[:month].to_date
       @dates = (Date.new(dt.year,dt.month, 1)...Date.new(dt.year,dt.month + 1, 1)).to_a
-      #search_date = params[:month]
-      #@month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
+      
     end
   end
 
