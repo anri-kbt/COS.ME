@@ -31,12 +31,14 @@
           <%= link_to new_calendar_path(used_date: d) ,class:"link2" do %>
             <i class="fas fa-calendar-plus"></i>
           <% end %></br>
-        </div>
+          </div>
         <% end %>
         <% next if @calendar[d.strftime("%y-%m-%d")].blank? %>
           <% @calendar[d.strftime("%y-%m-%d")].cosmetics.each do |c| %>
-            <%= image_tag c.cosmetic_image,size:"100x100" %>
-          <% end %><br>
+            <%= link_to cosmetic_path(c.id) do %>
+              <%= image_tag c.cosmetic_image,size:"100x100" %>
+            <% end %>
+          <% end %>
       </div>
     <% end %>
   </div>

@@ -17,23 +17,21 @@
    text-align: center;
  }
 }
-.main-container {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+#main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 footer {
-      margin-top: auto;
+  margin-top: auto;
+  background-color: #BE8A62;
+}
+footer p{
+  color: white;
 }
 .navbar {
   background-color: #BE8A62;
   background-image: none;
-}
-footer {
-  background-color: #BE8A62;
-}
-footer .p{
-  color: white;
 }
 .title{
   margin: 2rem auto;
@@ -207,7 +205,7 @@ footer .p{
    width: 90%;
 }
 .dates{
-  min-height: 20vh;
+  height: 20vh;
 }
 .date-image{
   height: 15vh;
