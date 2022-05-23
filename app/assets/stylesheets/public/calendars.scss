@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .calendar-container {
-   display: flex;
-   flex-wrap: wrap;
-  // align-items: stretch;
    margin: 0 auto;
    width: 90%;
 }
@@ -13,7 +10,9 @@
   text-align: center;
 }
 .calendar-row span{
-  margin: 10vh auto;
+  display: inline-block;
+  margin: 2vh auto;
+  width: 7vh;
 }
 .calendar-box{
   margin: 2rem auto;
@@ -25,6 +24,16 @@
   object-fit: cover;
   margin: 1rem;
 }
-.dates-row{
-  height: 100vh;
+.date-container {
+   //display: flex;
+   //flex-wrap: wrap;
+  // align-items: stretch;
+   margin: 0 auto;
+   width: 90%;
+}
+.dates{
+  min-height: 20vh;
+}
+.date-image{
+  height: 15vh;
 }

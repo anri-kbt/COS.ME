@@ -2,8 +2,14 @@ class Public::CalendarsController < ApplicationController
   def index
     @calendars = Calendar.where(customer_id: current_customer.id).includes(:customer)
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
-    #dt = params[:month].to_date
     @dates = (Date.new(Date.today.year,Date.today.month, 1)...Date.new(Date.today.year,Date.today.month + 1, 1)).to_a
+   
+    @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id).index_by { |e| e.used_date.strftime("%y-%m-%d") }
+
+    if params[:month].present?
+      dt = params[:month].to_date
+      @dates = (Date.new(dt.year,dt.month, 1)...Date.new(dt.year,dt.month + 1, 1)).to_a
+    end
     #month = params[:month].to_date
     #calendar = Calendar.where(used_date: month..month.end_of_month)
     #@month_cosme = Cosmetic.calendar.where(customer_id: current_customer.id)
@@ -27,14 +33,6 @@ class Public::CalendarsController < ApplicationController
       #  @hash[d] = '' if @hash[d].blank?
     #  end
   #  end
-
-    @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id).index_by { |e| e.used_date.strftime("%y-%m-%d") }
-
-    if params[:month].present?
-      dt = params[:month].to_date
-      @dates = (Date.new(dt.year,dt.month, 1)...Date.new(dt.year,dt.month + 1, 1)).to_a
-      
-    end
   end
 
   def new
