@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+      <div class="title">
+        <h3>COSMETIC DETAIL</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <%=image_tag @cosmetic.cosmetic_image,size:"350x250",class:"d-block mx-auto img-fluid w-75"%>
+      </div>
+      <div class="col-6">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+                <td class="col-3">ブランド名</td>
+                <td class="col-6"><%=@cosmetic.brand.brand_name %></td>
+            </tr>
+            <tr>
+                <td class="col-3">商品名</td>
+                <td class="col-6"><%=@cosmetic.cosmetic_name%></td>
+            </tr>
+            <tr>
+                <td class="col-3">カテゴリー</td>
+                <td class="col-6"><%=@cosmetic.category.category_name%></td>
+            </tr>
+            <tr>
+                <td class="col-3">購入価格</td>
+                <td class="col-6"><%=@cosmetic.price.to_s(:delimited)%>円</td>
+            </tr>
+            <tr>
+                <td class="col-3">商品説明</td>
+                <td class="col-6"><%=@cosmetic.introduction%></td>
+            </tr>
+            <tr>
+                <td class="col-3">評価</td>
+                <td class="col-6"><%= render "static_rate", cosmetic: @cosmetic %></td>
+            </tr>
+            <tr>
+              <% if current_customer==@cosmetic.customer %>
+                <td class="col-3">公開／非公開</td>
+                <% if @cosmetic.public_status_public? %>
+                  <td class="text-muted font-weight-bold">みんなに公開中</td>
+                <% else  @cosmetic.public_status_private? %>
+                  <td class="text-success font-weight-bold">自分だけ公開中</td>
+                <%end%>
+              <% else %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td class="col-3">
+                <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
+
+              </td>
+              <td class="col-6">
+                <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
+                  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                  <%= f.submit "送信する" %>
+                <% end %>
+                <% @cosmetic.cosme_comments.each do |cosme_comment| %>
+                  <%= image_tag cosme_comment.customer.get_profile_image(50,50) %>
+                  <%= cosme_comment.customer.nickname %>
+                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
+                  <%= cosme_comment.comment %>
+                  <% if cosme_comment.customer == current_customer %>
+                    <%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <% if current_customer==@cosmetic.customer %>
+                <td class="col-3"></td>
+                <td class="col-6">
+                  <%=link_to"編集する",edit_cosmetic_path(@cosmetic.id)%>
+                  <%=link_to"削除する",cosmetic_path(@cosmetic.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
+                </td>
+              <% else %>
+              <% end %>
+            </tr>
+            <% if @cosme_comment.customer == current_customer %>
+              <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %></td>
+            <% end %>
+          </tbody>
+        </table>
+          <tr>
+            <td><%= link_to "戻る", cosmetics_path , class: "link" %></td>
+          </tr>
+      </div>
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quattrocento', serif;
+}
+
+.flash{
+  .notice {
+   background-color: #ff8c00;
+   color: #fff;
+   text-align: center;
+ }
+}
+.main-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+}
+footer {
+      margin-top: auto;
+}
+.navbar {
+  background-color: #BE8A62;
+  background-image: none;
+}
+footer {
+  background-color: #BE8A62;
+}
+footer .p{
+  color: white;
+}
+.title{
+  margin: 2rem auto;
+  text-align: center;
+}
+.link{
+  text-decoration: none;
+  color: white ;
+}
+.link2{
+  text-decoration: none;
+  color: black ;
+}

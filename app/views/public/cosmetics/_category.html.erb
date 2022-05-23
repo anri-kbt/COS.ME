@@ -1,0 +1,21 @@
+<%= javascript_pack_tag 'category' %>
+
+<div class="category-box">
+  <ul class="category js-category">
+    <li class="category-table">
+      <span>
+        <%= link_to "ALL", cosmetics_path ,class:"link" %>
+      </span>
+    </li>
+    <% categories.each do |category| %>
+    <li class="category-table">
+      <div id='lamp' class='category-table'></div>
+      <span>
+        <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
+        (<%= category.cosmetics.count %>)
+      </span>
+    </li>
+    <% end %>
+  </ul>
+
+</div>

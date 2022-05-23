@@ -1,0 +1,119 @@
+<%= stylesheet_link_tag "public/cosmetics", :media => "all" %>
+
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>NEW COSMETIC</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto pb-5">
+      <%= form_with model: @cosmetic,url:cosmetics_path,method: :post,local:true do |f| %>
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :コスメ画像 ,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.file_field :cosmetic_image %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= label_tag "brand_name","ブランド名",class:"pl-3" %>
+          </div>
+          <div class="col-8">
+            <%= text_field_tag "brand_name",nil,:placeholder=>"ブランド名" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :商品名,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.text_field :cosmetic_name,:placeholder=>"商品名",size:30%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :カテゴリー,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.select :category_id,Category.all.map{|v| [v.category_name, v.id]},include_blank: "--選択してください--" %>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :メモ,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.text_area :introduction,:placeholder=>"コスメに対してのメモを残せます",size:"30x5"%>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :購入価格,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.text_field :price,:placeholder=>"1000",size:30%>円
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :総合評価,class:"pl-3"%>
+            <%= f.hidden_field :evaluation, id: :review_star %>
+          </div>
+
+          <div class="col-8">
+          <% if @cosmetic.id === nil %>
+            <div class="field-group" id="star">
+              <%= f.label :evaluation, 'Rate' %>
+              <%= f.hidden_field :evaluation, id: :review_star, class:'form-control' %>
+            </div>
+            <!-- 評価javascript -->
+            <script>
+              $(document).on('turbolinks:load', function() {
+                $('#star').empty();
+                $('#star').raty({
+                  size   :36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn: '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  scoreName: 'cosmetic[evaluation]',　//cosmeticモデルのevaluationカラムに保存
+                  half: true,  //星半分を許可する、DBには0.5谷の数値が保存される
+                });
+              })
+            </script>
+          <% else %>
+              <div class="form-group">
+                <%= render "static_rate", cosmetic: @cosmetic %>
+              </div>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4">
+            <%= f.label :公開／非公開 ,class:"pl-3"%>
+          </div>
+          <div class="col-8">
+            <%= f.radio_button :public_status, Cosmetic.public_statuses.key(0) %>みんなに公開  <%= f.radio_button :public_status,  Cosmetic.public_statuses.key(1) %>自分だけの記録用
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <%= f.submit "  新規登録  "%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

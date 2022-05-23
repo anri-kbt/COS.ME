@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>My Room</h3>
+    </div>
+  </div>
+  <dov class="row">
+    <div class="room-box">
+      <div class="room-item">
+        <%= link_to 'My cosmetics',mycosmetics_path(current_customer.id) %>
+      </div>
+      <div class="room-item">
+        <%= link_to 'Calendar' ,calendars_path %>
+      </div>
+      <div class="room-item">
+        <%= link_to 'Me',customer_path(current_customer.id) %>
+      </div>
+    </div>
+  </dov>
+</div>

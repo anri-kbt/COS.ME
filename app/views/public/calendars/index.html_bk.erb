@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag "public/calendars", :media => "all" %>
+
+<div class="container">
+  <div class="calendar-row">
+  <% e = Enumerator.new do |yielder| %>
+    <% head = Date.today.beginning_of_year %>
+    <% tail = Date.today.end_of_year %>
+
+    <% while head <= tail %>
+      <% yielder << head %>
+      <%= link_to calendars_path(month: head) do %>
+        <%= head.month %><span>月</span>
+      <% end %>
+      <% head = head.next_month %>
+    <% end %>
+  <% end %>
+  <% e.each {|date|} %>
+  </div>
+
+  <div class="calendar-row">
+    <%# @dates.each do |d| %>
+      <%#= d %>
+      <%# @hash.each do |k| %>
+        <%# if d == k[0] %>
+          <%#= k[1][0].cosmetic_name %>
+        <%# end %>
+      <%# end%>
+    <%# end %>
+
+  </div>
+
+  <div>
+    <% @hash.each do |hash| %> <!-- [date, cosmetic] -->
+      <%= hash.first %><br>
+      <% if hash.last.blank? %>
+      <% else %>
+        <% hash.last.each do |h| %>
+           <%= h.cosmetic_name %>
+        <% end %><br>
+      <% end %>
+    <% end %>
+  </div>
+  <%# end %>
+</div>

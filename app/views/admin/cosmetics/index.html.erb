@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "public/cosmetics", :media => "all" %>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="title">
+      <h3>CUSTOMER'S COSMETICS</h3>
+    </div>
+  </div>
+</div>
+
+  <div class="cosmetic-box">
+    <% @cosmetics.each do |cosmetic| %>
+      <div class="cosmetic-container">
+        <%= link_to admin_cosmetic_path(cosmetic.id) do %>
+          <%= image_tag cosmetic.cosmetic_image ,size:'100x100' %>
+        <% end %>
+        <div class="cosmetic-body">
+          <div class="row">
+            <div class="col-10">
+              <p class="cosmetic-name">
+                <%= link_to admin_cosmetic_path(cosmetic.id) do %>
+                  <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
+                <% end %>
+              </p>
+              <p class="card-text">説明：<%= cosmetic.introduction %></p>
+              <span><i class="fas fa-user"></i> By <%= cosmetic.customer.nickname %> ｜ </span>
+              <span><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<%#= paginate cosmetics %>
+</div>

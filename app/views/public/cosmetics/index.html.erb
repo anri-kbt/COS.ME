@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "public/cosmetics", :media => "all" %>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="title">
+      <h3>COSMETICS</h3>
+    </div>
+  </div>
+</div>
+<div class="link">
+  <%= link_to "新規投稿" ,new_cosmetic_path %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render "category", categories: @categories %>
+  </div>
+  <div class="row">
+    <%= render "index", cosmetics: @cosmetics, customer: @customer %>
+  </div>
+</div>

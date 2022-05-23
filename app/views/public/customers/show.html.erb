@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>ME</h3>
+    </div>
+  </div>
+  <div class='row form-group'>
+    <h4>
+      <span class="px-3">ME情報</span>
+    </h4>
+    <%= link_to edit_customer_path(current_customer) do %>
+      <i class="fas fa-pen-to-square"></i>
+    <% end %>
+  </div>
+  <div class="row">
+    <table class="table table-bordered col-10">
+      <tbody>
+          <div>プロフィール画像</div>
+          <div><%= image_tag @customer.get_profile_image(100,100) %></div>
+        <tr>
+          <td width="150" class="bg-light">ニックネーム</td>
+          <td width="200"><%= @customer.nickname %></td>
+        </tr>
+        <tr>
+          <td width="150" class="bg-light">ユーザーID</td>
+          <td width="200"><%= @customer.user_id %></td>
+        </tr>
+        <tr>
+          <td scope="col" class="bg-light">電話番号</td>
+          <td><%= @customer.call_number %></td>
+        </tr>
+        <tr>
+          <td scope="col" class="bg-light">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
