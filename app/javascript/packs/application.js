@@ -10,13 +10,16 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "../stylesheets/application"
+import "../stylesheets/public/homes"
+import "../stylesheets/public/cosmetics"
+import "../stylesheets/public/calendars"
 import "jquery";
 //import 'hammerjs';
 import "skippr.min";
 import "script.js";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()

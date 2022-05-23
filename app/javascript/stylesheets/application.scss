@@ -47,3 +47,168 @@ footer .p{
   text-decoration: none;
   color: black ;
 }
+
+//homes
+.image1 {
+  background-image: url("../../assets/images/image1.jpg");
+}
+
+.image2 {
+  background-image: url("../../assets/images/image2.jpg");
+}
+
+.image3 {
+  background-image: url("../../assets/images/image3.jpg");
+}
+
+.image4 {
+  background-image: url("../../assets/images/image4.jpg");
+}
+
+.image5 {
+  background-image: url("../../assets/images/image5.jpg");
+}
+
+#tall {
+  height: 600px;
+}
+.menu{
+  display: flex;
+  justify-content: center;
+}
+.menu-box{
+  display: flex;
+  margin: 5rem 0;
+  width: 80%;
+  text-align: center;
+}
+.menu-item{
+  margin: 0 auto;
+  width: 10em;
+  background-color: #ffb6c1;
+}
+.service-box{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.service-item{
+  width: 45%;
+  margin: 1rem 2rem;
+  text-align: center;
+  border: solid;
+  padding: 2rem;
+}
+.icon{
+  margin: 1rem 2rem 2rem;
+}
+
+.message{
+  text-align: center;
+  margin: 3rem auto;
+}
+
+//cosmetics
+.category-box{
+  width: 90%;
+  overflow-x: scroll;
+   -webkit-overflow-scrolling: touch;
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}
+.category-box::-webkit-scrollbar {
+ display:none;
+}
+.category-box .category li{
+  list-style: none;
+  display: block;
+  width: 200px;
+}
+.category-table{
+  text-align: center;
+  background-color: #BE8A62;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  margin: 2px;
+}
+.category-table span{
+  padding: 20px;
+  color: #fff;
+}
+.cosmetic-box{
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  text-align: center;
+  margin: 10px auto;
+}
+.cosmetic-container{
+  margin: 2vw;
+  width: 20vw;
+  height: 30vh;
+}
+.profile-image{
+  margin-bottom: 1vh;
+}
+.profile-image img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 30px;
+  height: 30px;
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+}
+.cosmetic-image {
+  width: 10vw;
+  height: 15vh;
+  margin: 0 auto;
+}
+.cosmetic-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cosmetic-row{
+  margin: 0 auto;
+}
+.cosmetic-row p{
+  margin: 0;
+}
+
+//calendar
+.calendar-container {
+   margin: 0 auto;
+   width: 90%;
+}
+.calendar-row{
+  margin: 2vh auto;
+  text-align: center;
+}
+.calendar-row span{
+  display: inline-block;
+  margin: 2vh auto;
+  width: 7vh;
+}
+.calendar-box{
+  margin: 2rem auto;
+  width: 90%;
+  height: 20vh;
+  vertical-align: top;
+}
+.calendar-box img{
+  object-fit: cover;
+  margin: 1rem;
+}
+.date-container {
+   //display: flex;
+   //flex-wrap: wrap;
+  // align-items: stretch;
+   margin: 0 auto;
+   width: 90%;
+}
+.dates{
+  min-height: 20vh;
+}
+.date-image{
+  height: 15vh;
+}
