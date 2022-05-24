@@ -46,6 +46,7 @@ class Public::CosmeticsController < ApplicationController
 
   def edit
     @cosmetic = Cosmetic.find(params[:id])
+    @brand = Brand.find(params[:id])
     if @cosmetic.customer==current_customer
       render :edit
     else
@@ -55,8 +56,9 @@ class Public::CosmeticsController < ApplicationController
 
   def update
     @cosmetic = Cosmetic.find(params[:id])
+    @brand = Brand.find(params[:id])
     if @cosmetic.update(cosmetic_params)
-      redirect_to cosmetic_path(@cosmetic.id) ,notice: "商品情報を更新しました"
+      redirect_to cosmetic_path(@cosmetic.id) ,notice: "コスメレビューを更新しました"
     else
       render "edit"
     end
