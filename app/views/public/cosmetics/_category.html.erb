@@ -1,18 +1,20 @@
 <div class="category-box">
-  <ul class="category js-category">
-    <li class="category-table">
-      <span>
-        <%= link_to "ALL", cosmetics_path ,class:"link" %>
-      </span>
-    </li>
-    <% categories.each do |category| %>
-    <li class="category-table">
-      <div id='lamp'></div>
-      <span>
-        <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
-        (<%= category.cosmetics.count %>)
-      </span>
-    </li>
-    <% end %>
-  </ul>
+  <div class="tab-categories">
+    <div class="category-contents">
+      <div class="contents">
+        <span>
+          <%= link_to "ALL", cosmetics_path ,class:"link" %>
+        </span>
+      </div>
+      <% categories.each do |category| %>
+      <div>
+        <span>
+          <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
+          (<%= category.cosmetics.count %>)
+        </span>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="next-btn">></div>
 </div>

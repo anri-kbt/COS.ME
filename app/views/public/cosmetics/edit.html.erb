@@ -9,23 +9,25 @@
       <%= form_with model:@cosmetic,url:cosmetic_path,method: :patch,local:true do |f| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= f.label :コスメ画像 ,class:"pl-3"%>
+            <%#= f.label :コスメ画像 ,class:"pl-3"%>
           </div>
           <div class="col-8">
+            <% if @cosmetic.cosmetic_image.attached? %>
+              <%= image_tag @cosmetic.cosmetic_image %>
+            <% end %>
+            <span style="font-size : small">画像を変更したい場合は下記より選択してください</span>
             <%= f.file_field :cosmetic_image %>
           </div>
         </div>
 
-        <%= fields_for @brand,method: :patch, local:true do |brand| %>
         <div class="form-group row">
           <div class="col-4">
-            <%= f.label :ブランド名,class:"pl-3"%>
+            <%= label_tag "brand_name","ブランド名",class:"pl-3" %>
           </div>
           <div class="col-8">
-            <%= f.text_field :brand_name,:placeholder=>"ブランド名" %>
+            <%= text_field_tag "brand_name",@brand.brand_name,:placeholder=>"ブランド名" %>
           </div>
         </div>
-        <% end %>
 
         <div class="form-group row">
           <div class="col-4">

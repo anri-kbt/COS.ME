@@ -56,7 +56,15 @@ class Public::CosmeticsController < ApplicationController
 
   def update
     @cosmetic = Cosmetic.find(params[:id])
-    @brand = Brand.find(params[:id])
+    brand_params_name = params['brand_name']
+    brand = Brand.find_by(brand_name: brand_params_name)
+    if brand.nil? #ブランド名がDBになかったら、新しくidを取得して保存
+      new_brand = Brand.new(brand_name: brand_params_name)
+      new_brand.save
+      @cosmetic.brand_id = new_brand.id
+    else
+      @cosmetic.brand_id = brand.id  #同じブランド名であれば同じidで保存
+    end
     if @cosmetic.update(cosmetic_params)
       redirect_to cosmetic_path(@cosmetic.id) ,notice: "コスメレビューを更新しました"
     else

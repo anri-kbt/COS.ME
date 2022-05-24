@@ -113,33 +113,64 @@ img{
 
 //cosmetics
 .category-box{
-  width: 90%;
+  position: relative;
+}
+.tab-categories {
+  width: 100%;
+  background: #555;
+  //overflow-x: scroll;
+  // -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+   white-space: nowrap;
   overflow-x: scroll;
-   -webkit-overflow-scrolling: touch;
-   -ms-overflow-style: none;
-   scrollbar-width: none;
+   -webkit-overflow-scrolling: touch; /* 慣性スクロール */
 }
-.category-box::-webkit-scrollbar {
- display:none;
-}
-.category-box .category li{
-  list-style: none;
-  display: block;
-  width: 220px;
-}
-.category-table{
-  text-align: center;
-  background-color: #BE8A62;
-  float: left;
+.category-contents {
+  max-width: 1060px; /* メニューの最大幅 */
+  min-width: 770px; /* メニューの最小幅 */
+  //width: 90%;
   height: 50px;
   line-height: 50px;
-  margin: 2px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  padding-right: 25px; /* 右側の固定分余白を空ける */
 }
-.category-table span{
-  padding: 20px;
-  color: #fff;
+.contents {
+  width: 350px; /* メニューの個別の幅 */
+  text-align: center;
 }
+.contents :hover {
+  background: #222; /* マウスホバー時の背景色 */
+}
+.contents span {
+  color: #fff; /* メニューの文字色 */
+  text-decoration: none;
+}
+.next-btn { /* 右側に固定する部分 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px; /* 固定部分の幅 */
+  height: 40px; /* メニューの高さに合わせる */
+  line-height: 40px;
+  background: #fff;
+  color: #555;
+}
+@media only screen and (min-width: 771px) { /* PCサイズでの指定 */
+.tab-categories ul {
+  padding: 0;
+}
+.tab-categories ul li {
+  width: 350px; /* メニューの個別の幅 */
+}
+.next-btn {
+  display: none; /* 右側の固定部分を非表示 */
+}
+}
+
 .cosmetic-box{
+  //display:inline-block;
   display: flex;
   flex-wrap: wrap;
   width: 320px;
@@ -157,6 +188,32 @@ img{
   .cosmetic-box{
     width: 960px;
   }
+}
+#lamp{
+  width: 33.3%;
+  height: 2px;
+  background:#333;
+  display: block;
+  position: absolute;
+  top: 40px;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
+#lamp.contents{
+  left: 33.3%;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
+#lamp.content1{
+  left: 0;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
 }
 .cosmetic-container{
   margin: 10px;
