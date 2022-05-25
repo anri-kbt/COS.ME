@@ -6,14 +6,14 @@
     </div>
 
     <div class="row">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="text-center">
           <%= image_tag @cosmetic.customer.get_profile_image(40,40) %>
           <span><%= @cosmetic.customer.nickname %></span>
         </div>
         <%=image_tag @cosmetic.cosmetic_image,size:"350x250" ,class:"d-block mx-auto img-fluid w-75"%>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-6 col-xs-12">
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -59,15 +59,18 @@
               <td class="col-6">
                 <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
                   <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-                  <%= f.submit "送信する" %>
+                  <input type="submit" value"送信する" class="button">
+                  <%#= f.submit "送信する" %>
                 <% end %>
                 <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-                  <%= image_tag cosme_comment.customer.get_profile_image(50,50) %>
+                  <%= image_tag cosme_comment.customer.get_profile_image(40,40) %>
                   <%= cosme_comment.customer.nickname %>
                   <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
                   <%= cosme_comment.comment %>
                   <% if cosme_comment.customer == current_customer %>
-                    <%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %>
+                    <%= link_to cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link2" do %>
+                      <i class="ri-delete-bin-7-line"></i>
+                    <% end %>
                   <% end %>
                 <% end %>
               </td>
@@ -77,8 +80,12 @@
               <% if current_customer==@cosmetic.customer %>
                 <td class="col-3"></td>
                 <td class="col-6">
-                  <%=link_to"編集する",edit_cosmetic_path(@cosmetic.id) %>
-                  <%=link_to"削除する",cosmetic_path(@cosmetic.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
+                  <%=link_to edit_cosmetic_path(@cosmetic.id), class:"btn2 mr-5" do %>
+                    <i class="ri-edit-circle-line"><span>編集</span></i>
+                  <% end %>
+                  <%=link_to cosmetic_path(@cosmetic.id),method: :delete,"data-confirm"=>"本当に削除しますか？", class:"btn2" do %>
+                    <i class="ri-delete-bin-7-line"><span>削除</span></i>
+                  <% end %>
                 </td>
               <% end %>
             </tr>
