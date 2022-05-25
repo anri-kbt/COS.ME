@@ -55,7 +55,6 @@
             <tr>
               <td class="col-3">
                 <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
-
               </td>
               <td class="col-6">
                 <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
@@ -78,20 +77,16 @@
               <% if current_customer==@cosmetic.customer %>
                 <td class="col-3"></td>
                 <td class="col-6">
-                  <%=link_to"編集する",edit_cosmetic_path(@cosmetic.id)%>
+                  <%=link_to"編集する",edit_cosmetic_path(@cosmetic.id) %>
                   <%=link_to"削除する",cosmetic_path(@cosmetic.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
                 </td>
-              <% else %>
               <% end %>
             </tr>
-            <% if @cosme_comment.customer == current_customer %>
-              <td><%= link_to "Destroy", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link" %></td>
-            <% end %>
           </tbody>
         </table>
-          <tr>
-            <td><%= link_to "戻る", cosmetics_path , class: "link" %></td>
-          </tr>
+        <div>
+          <%= link_to ">>コスメ一覧に戻る", cosmetics_path ,class: "link2" %>
+        </div>
       </div>
     </div>
 </div>

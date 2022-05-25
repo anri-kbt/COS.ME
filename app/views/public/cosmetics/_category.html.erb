@@ -7,7 +7,7 @@
         </span>
       </div>
       <% categories.each do |category| %>
-      <div>
+      <div class="contents" >
         <span>
           <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
           (<%= category.cosmetics.count %>)
@@ -16,5 +16,5 @@
       <% end %>
     </div>
   </div>
-  <div class="next-btn">></div>
+  <!--div class="next-btn">></div-->
 </div>

@@ -12,7 +12,7 @@
             <%= form_with url: search_cosmetics_path, local: true, method: :get do |form| %>
               <%= form.text_field :keyword, placeholder: 'キーワードから探す'%>
               <%= form.button :type => "submit" do %>
-                <i class="fas fa-search"></i>
+                <i class="ri-search-2-line"></i>
               <% end %>
             <% end %>
           </li>
@@ -42,11 +42,6 @@
             <%=link_to admin_customers_path,class:'nav-link text-light' do %>
               <span>会員一覧</span>
             <%end%>
-          </li>
-          <li>
-            <%#=link_to admin_comments_path,class:'nav-link text-light' do %>
-              <span>コメント一覧</span>
-            <%#end%>
           </li>
           <li>
             <%= link_to destroy_admin_session_path,method: :delete,class:'nav-link text-light' do %>

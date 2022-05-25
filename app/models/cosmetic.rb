@@ -15,6 +15,7 @@ class Cosmetic < ApplicationRecord
     validates :introduction
     validates :evaluation
   end
+  validates :cosmetic_name, length:{ maximum:30}
 
   enum public_status: { public: 0, private: 1}, _prefix: true
 

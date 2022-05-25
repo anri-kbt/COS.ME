@@ -1,4 +1,8 @@
 class Public::CosmeticsController < ApplicationController
+  before_action :authenticate_customer!, except:[:index, :category, :show, :search]
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery with: :exception
+
   def new
     @cosmetic = Cosmetic.new
   end

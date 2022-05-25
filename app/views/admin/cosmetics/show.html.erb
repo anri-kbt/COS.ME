@@ -37,23 +37,34 @@
                 <td class="col-6"><%= render "public/cosmetics/static_rate", cosmetic: @cosmetic %></td>
             </tr>
             <tr>
-              <% if current_customer==@cosmetic.customer %>
                 <td class="col-3">公開／非公開</td>
                 <% if @cosmetic.public_status_public? %>
                   <td class="text-muted font-weight-bold">みんなに公開中</td>
                 <% else  @cosmetic.public_status_private? %>
                   <td class="text-success font-weight-bold">自分だけ公開中</td>
                 <%end%>
-              <% else %>
-              <% end %>
+            </tr>
+            <tr>
+              <td class="col-3">
+                <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
+              </td>
+              <td class="col-6">
+                <% @cosmetic.cosme_comments.each do |cosme_comment| %>
+                  <%= image_tag cosme_comment.customer.get_profile_image(50,50) %>
+                  <%= cosme_comment.customer.nickname %>
+                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
+                  <%= cosme_comment.comment %>
+                    <%= link_to "コメントを削除する", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link","data-confirm"=>"本当に削除しますか？" %>
+                <% end %>
+              </td>
             </tr>
         </tbody>
       </table>
       </div>
     </div>
     <div class="row">
-      <div class="mx-auto">
-        <%=link_to"削除する",admin_cosmetic_path(@cosmetic.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
+      <div>
+        <%= link_to "この投稿を削除する", admin_cosmetic_path(@cosmetic.id), method: :delete,"data-confirm"=>"本当に削除しますか？" ,class:"link2" %>
       </div>
     </div>
 </div>

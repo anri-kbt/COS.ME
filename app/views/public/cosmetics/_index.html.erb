@@ -17,8 +17,8 @@
                   <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
                 <% end %>
               </p>
-              <p class="card-text">説明：<%= cosmetic.introduction %></p>
-              <span><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
+              <p style="font-size:small">説明：<%= cosmetic.introduction %></p>
+              <span style="font-size:small"><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
           </div>
         </div>
       </div>

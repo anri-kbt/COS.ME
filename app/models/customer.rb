@@ -15,6 +15,7 @@ class Customer < ApplicationRecord
     validates :call_number
     validates :email
   end
+  validates :nickname, length:{minimum:2 ,maximum:15}
 
   def active_for_authentication?
     super && (is_deleted == false)

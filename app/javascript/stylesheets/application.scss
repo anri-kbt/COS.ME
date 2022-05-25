@@ -33,6 +33,28 @@ img{
   max-width: 100%;
   height: auto;
 }
+
+//button
+.btn {
+  display: block;
+  position: relative;
+  padding: 0.8em;
+  text-align: center;
+	text-decoration: none;
+  width: 100px;
+  height: 50px;
+  color: #BE8A62;
+  background: #fff;
+  border: 2px solid #BE8A62;
+  border-radius: 10px;
+}
+.btn:hover {
+  color: #fff;
+	cursor: pointer;
+	text-decoration: none;
+  background-color: #BE8A62;
+}
+
 .navbar {
   background-color: #BE8A62;
   background-image: none;
@@ -114,12 +136,11 @@ img{
 //cosmetics
 .category-box{
   position: relative;
+  width: 100%;
 }
 .tab-categories {
   width: 100%;
   background: #555;
-  //overflow-x: scroll;
-  // -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
    white-space: nowrap;
   overflow-x: scroll;
@@ -128,7 +149,7 @@ img{
 .category-contents {
   max-width: 1060px; /* メニューの最大幅 */
   min-width: 770px; /* メニューの最小幅 */
-  //width: 90%;
+  width: 90%;
   height: 50px;
   line-height: 50px;
   margin: 0 auto;
@@ -137,8 +158,10 @@ img{
   padding-right: 25px; /* 右側の固定分余白を空ける */
 }
 .contents {
-  width: 350px; /* メニューの個別の幅 */
+  flex-shrink: 0; /* 自動制御を0にして縮小しなくする */
+  width: 200px; /* メニューの個別の幅 */
   text-align: center;
+  margin: 1vh;
 }
 .contents :hover {
   background: #222; /* マウスホバー時の背景色 */
@@ -189,32 +212,7 @@ img{
     width: 960px;
   }
 }
-#lamp{
-  width: 33.3%;
-  height: 2px;
-  background:#333;
-  display: block;
-  position: absolute;
-  top: 40px;
-  transition: all .3s ease-in;
--o-transition: all .3s ease-in;
--webkit-transition: all .3s ease-in;
--moz-transition: all .3s ease-in;
-}
-#lamp.contents{
-  left: 33.3%;
-  transition: all .3s ease-in;
--o-transition: all .3s ease-in;
--webkit-transition: all .3s ease-in;
--moz-transition: all .3s ease-in;
-}
-#lamp.content1{
-  left: 0;
-  transition: all .3s ease-in;
--o-transition: all .3s ease-in;
--webkit-transition: all .3s ease-in;
--moz-transition: all .3s ease-in;
-}
+
 .cosmetic-container{
   margin: 10px;
   width: 300px;
@@ -231,12 +229,14 @@ img{
   object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
 }
 .cosmetic-image {
-  //width: 30vw;
-  //height: 15vh;
-  //margin: 0 auto;
+  width: 180px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
 }
 .cosmetic-image img{
-  width: 200px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
 }
 .cosmetic-row{
