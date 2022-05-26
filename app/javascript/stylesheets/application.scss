@@ -9,6 +9,20 @@
     box-sizing: border-box;
     font-family: 'Quattrocento', serif;
 }
+html , body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  margin-top: auto;
+  background-color: #BE8A62;
+  color: white;
+}
 
 .flash{
   .notice {
@@ -17,18 +31,12 @@
    text-align: center;
  }
 }
-#main-container {
+main-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-footer {
-  margin-top: auto;
-  background-color: #BE8A62;
-}
-footer p{
-  color: white;
-}
+
 img{
   max-width: 100%;
   height: auto;
@@ -63,6 +71,8 @@ img{
 .btn2:hover {
   cursor: pointer;
   text-decoration: none;
+  color: #BE8A62;
+  font-size: 1.5em;
 }
 .btn2::after {
   position: absolute;
@@ -297,12 +307,16 @@ img{
    width: 90%;
 }
 .calendar-row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 2vh auto;
   text-align: center;
+  min-height: 40px;
 }
 .calendar-row span{
   display: inline-block;
-  margin: 2vh auto;
+  margin: 1vh auto;
   width: 7vh;
 }
 .calendar-box{

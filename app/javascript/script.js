@@ -1,4 +1,5 @@
  //Skipperの初期化
+ document.addEventListener("turbolinks:load", function() {
   $(document).ready(function () {
     $("#theTarget").skippr({
       // スライドショーの変化 ("fade" or "slide")
@@ -23,3 +24,4 @@
       hidePrevious : true
     });
   });
+ })
