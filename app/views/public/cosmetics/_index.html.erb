@@ -2,8 +2,10 @@
     <% cosmetics.each do |cosmetic| %>
       <div class="cosmetic-container">
         <div class="profile-image">
-          <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
-          <span><%= cosmetic.customer.nickname %></span></br>
+          <%= link_to mycosmetics_path(cosmetic.customer.id), class:"link2" do %>
+            <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
+            <span><%= cosmetic.customer.nickname %></span></br>
+          <% end %>
         </div>
         <div class="cosmetic-image">
         <%= link_to cosmetic_path(cosmetic.id) do %>

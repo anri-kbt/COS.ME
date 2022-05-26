@@ -28,10 +28,24 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  #def category
+   # @category = Cosmetic.find_by(category_id: params[:category_id])
+  #  @cosmetics = Cosmetic.category
+  #end
+
   def mycosmetics
-    @customer = current_customer
-    @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer).order("created_at DESC")
-    @categories = Category.all
+    @customer = Customer.find(params[:id])
+    if @customer.id == current_customer.id
+      @customer = current_customer
+      @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer).order("created_at DESC")
+      @categories = Category.all
+      #@category = Cosmetic.find_by(category_id: params[:category_id])
+      #category.cosmetics = Category.cosmetics.where(customer_id: current_customer.id)
+    else
+      @customer = Customer.find(params[:id])
+      @cosmetics = Cosmetic.public_status.where(customer_id: @customer.id).includes(:customer).order("created_at DESC")
+    end
+
     if params[:category_id].present?
       #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
       @category = Category.find(params[:category_id])

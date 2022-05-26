@@ -20,7 +20,11 @@ class Public::CosmeticsController < ApplicationController
       @cosmetic.brand_id = brand.id  #同じブランド名であれば同じidで保存
     end
     if @cosmetic.save!
-       redirect_to cosmetics_path ,notice: "新しいコスメを投稿しました"
+      if @cosmetic.public_status == 0
+        redirect_to cosmetics_path ,notice: "新しいコスメを投稿しました"
+      else @cosmetic.public_status == 1
+        redirect_to mycosmetics_path(current_customer.id)
+      end
     else
       render :new
     end

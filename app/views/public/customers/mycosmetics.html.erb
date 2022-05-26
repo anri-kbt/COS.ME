@@ -20,13 +20,13 @@
           <tbody>
             <tr>
               <td><%= @customer.nickname %></td>
-              <% if @customer.id = current_customer.id %>
+              <% if @customer.id == current_customer.id %>
               <td>
                 <%= link_to edit_customer_path(current_customer), class:"link2" do %>
                   <i class="ri-user-settings-line fa-lg"><span style="font-size:small">プロフィール設定</span></i>
                 <% end %>
               </td>
-            <% end %>
+              <% end %>
             </tr>
             <tr><td><%= @customer.user_id %></td></tr>
             <tr><td><span>投稿数 :</span><%= @customer.cosmetics.count %></td></tr>
