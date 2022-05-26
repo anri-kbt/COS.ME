@@ -4,19 +4,21 @@
       <h3>ME</h3>
     </div>
   </div>
-  <div class='row form-group'>
-    <h4>
-      <span class="px-3">ME情報</span>
-    </h4>
-    <%= link_to edit_customer_path(current_customer) do %>
-      <i class="fas fa-pen-to-square"></i>
-    <% end %>
+</div>
+<div class="container">
+  <div class="row mx-5 pb-2">
+      <h4><span>MY情報</span></h4>
+      <%= link_to edit_customer_path(current_customer), class:"link2" do %>
+        <i class="ri-user-settings-line fa-lg"></i>
+      <% end %>
   </div>
   <div class="row">
-    <table class="table table-bordered col-10">
+    <table class="table table-bordered col-10 mx-auto">
       <tbody>
-          <div>プロフィール画像</div>
-          <div><%= image_tag @customer.get_profile_image(100,100) %></div>
+        <tr>
+          <td width="150" class="bg-light">プロフィール画像</td>
+          <td><%= image_tag @customer.get_profile_image(100,100) %></td>
+        </tr>
         <tr>
           <td width="150" class="bg-light">ニックネーム</td>
           <td width="200"><%= @customer.nickname %></td>

@@ -17,6 +17,7 @@ html , body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 footer {
   margin-top: auto;
@@ -30,11 +31,6 @@ footer {
    color: #fff;
    text-align: center;
  }
-}
-main-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 img{
@@ -190,7 +186,8 @@ img{
 //cosmetics
 .category-box{
   position: relative;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
 }
 .tab-categories {
   width: 100%;
@@ -204,7 +201,7 @@ img{
   max-width: 1060px; /* メニューの最大幅 */
   min-width: 770px; /* メニューの最小幅 */
   width: 90%;
-  height: 50px;
+  height: 60px;
   line-height: 50px;
   margin: 0 auto;
   list-style: none;
@@ -288,6 +285,15 @@ img{
   display: block;
   margin: 0 auto;
 }
+
+.profile-image2 img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  border: 5px double #BE8A62;
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+}
 .cosmetic-image img{
   width: 160px;
   height: 160px;
@@ -315,7 +321,7 @@ img{
   min-height: 40px;
 }
 .calendar-row span{
-  display: inline-block;
+  //display: inline-block;
   margin: 1vh auto;
   width: 7vh;
 }

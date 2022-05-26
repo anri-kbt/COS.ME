@@ -18,17 +18,17 @@
           </li>
           <li>
             <%= link_to cosmetics_path,class: 'nav-link text-light' do %>
-              <!--i class="fas fa-home"></i--> Cosmetics
+              <%= image_tag 'icon_lip.png', size:"30x30" %> Cosmetics
             <% end %>
           </li>
           <li>
             <%= link_to customers_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> My Room
+              <i class="ri-home-3-line"></i> My Room
             <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> Log out
+              <i class="ri-logout-box-r-line"></i> Log out
             <% end %>
           </li>
         <%elsif admin_signed_in?%>

@@ -4,6 +4,7 @@
       <div class="contents">
         <span>
           <%= link_to "ALL", cosmetics_path ,class:"link" %>
+          (<%= cosmetics.count %>)
         </span>
       </div>
       <% categories.each do |category| %>

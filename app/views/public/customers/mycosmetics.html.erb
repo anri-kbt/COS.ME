@@ -5,19 +5,45 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container px-5">
   <div class="row">
-    <div class="customer-image">
-      <%= image_tag @customer.get_profile_image(100,100) %>
+    <div class="col-6">
+      <div class="text-right">
+        <div class="profile-image2">
+            <%= image_tag @customer.get_profile_image(150,150) %>
+        </div>
+      </div>
     </div>
-    <div class="customer-nickname">
-      <%= @customer.nickname %>
-    </div>
-    <div class="cosmetic-count">
-      <span>投稿数 :</span>
-      <%= @customer.cosmetics.count %>
+    <div class="col-6">
+      <div class="text-left">
+        <table class="table table-borderless mx-auto">
+          <tbody>
+            <tr>
+              <td><%= @customer.nickname %></td>
+              <% if @customer.id = current_customer.id %>
+              <td>
+                <%= link_to edit_customer_path(current_customer), class:"link2" do %>
+                  <i class="ri-user-settings-line fa-lg"><span style="font-size:small">プロフィール設定</span></i>
+                <% end %>
+              </td>
+            <% end %>
+            </tr>
+            <tr><td><%= @customer.user_id %></td></tr>
+            <tr><td><span>投稿数 :</span><%= @customer.cosmetics.count %></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-<%= render "public/cosmetics/category",categories: @categories %>
-<%= render "public/cosmetics/index" , cosmetics: @cosmetics, customer: @customer %>
+<div class="container">
+  <div class="link">
+    <%= link_to "新規投稿" ,new_cosmetic_path, class:"link2" %>
+  </div>
+  <div class="row">
+    <%= render "public/cosmetics/category",categories: @categories, cosmetics: @cosmetics %>
+  </div>
+  <div class="row">
+    <%= render "public/cosmetics/index" , cosmetics: @cosmetics, customer: @customer %>
+  </div>
+</div>
