@@ -1,47 +1,50 @@
-<div class="calendar-container">
-  <div class="calendar-row">
-  <% e = Enumerator.new do |yielder| %>
-    <% head = Date.today.beginning_of_year %>
-    <% tail = Date.today.end_of_year %>
+<div class="container">
+  <div class="calendar-container">
+    <div class="calendar-row">
+    <% e = Enumerator.new do |yielder| %>
+      <% head = Date.today.beginning_of_year %>
+      <% tail = Date.today.end_of_year %>
 
-    <% while head <= tail %>
-      <% yielder << head %>
-      <%= link_to calendars_path(month: head),class:"btn2" do %>
-        <span><b><%= head.month %></b>月</span>
-      <% end %>
-      <% head = head.next_month %>
-    <% end %>
-  <% end %>
-  <% e.each {|date|} %>
-  </div>
-  <%#= link_to calendars_path(year: ) do %>
-    <%= Date.today.next_year.year %>年
-  <%# end %>
-</div>
-
-<div class="date-container">
-  <div class="dates-row">
-    <% @dates.each do |d| %> <!-- [date, cosmetic] -->
-      <div class="dates">
-        <div class="date-image">
-        <%= d %>
-        <% if @calendar[d.strftime("%y-%m-%d")].present? %>
-          <%= link_to edit_calendar_path(@calendar[d.strftime("%y-%m-%d")].id) ,class:"link2" do %>
-            <i class="ri-edit-box-fill"></i>
-          <% end %>
-        <% else %>
-          <%= link_to new_calendar_path(used_date: d) ,class:"link2" do %>
-            <i class="ri-add-circle-line"></i>
-          <% end %></br>
-          </div>
+      <% while head <= tail %>
+        <% yielder << head %>
+        <%= link_to calendars_path(month: head),class:"button" do %>
+          <span><b><%= head.month %></b>月</span>
         <% end %>
-        <% next if @calendar[d.strftime("%y-%m-%d")].blank? %>
-          <% @calendar[d.strftime("%y-%m-%d")].cosmetics.each do |c| %>
-            <%= link_to cosmetic_path(c.id) do %>
-              <%= image_tag c.cosmetic_image,size:"100x100" %>
-            <% end %>
-          <% end %>
-      </div>
+        <% head = head.next_month %>
+      <% end %>
     <% end %>
+    <% e.each {|date|} %>
+    </div>
+    <%#= link_to calendars_path(year: ) do %>
+      <%= Date.today.next_year.year %>年
+    <%# end %>
+  </div>
+  <div class="date-container">
+    <div class="dates-row">
+      <% @dates.each do |d| %> <!-- [date, cosmetic] -->
+        <div class="dates">
+          <div class="date-image">
+            <%= d %>
+            <% if @calendar[d.strftime("%y-%m-%d")].present? %>
+              <%= link_to edit_calendar_path(@calendar[d.strftime("%y-%m-%d")].id) ,class:"link2" do %>
+                <i class="ri-edit-box-fill"></i>
+              <% end %>
+            <% else %>
+              <%= link_to new_calendar_path(used_date: d) ,class:"link2" do %>
+                <i class="ri-add-circle-line"></i>
+              <% end %></br>
+            <% end %>
+          </div>
+          <div>
+            <% next if @calendar[d.strftime("%y-%m-%d")].blank? %>
+            <% @calendar[d.strftime("%y-%m-%d")].cosmetics.each do |c| %>
+              <%= link_to cosmetic_path(c.id) do %>
+                <%= image_tag c.cosmetic_image,size:"100x100" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

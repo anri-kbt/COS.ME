@@ -1,11 +1,11 @@
 <div class="container py-5">
   <div class="row">
     <div class="title">
-      <h3>MY COSMETICS</h3>
+      <h3><%= @customer.nickname %>'s  MY ROOM </h3>
     </div>
   </div>
 </div>
-<div class="container px-5">
+<div class="container md-px-5">
   <div class="row">
     <div class="col-6">
       <div class="text-right">
@@ -22,8 +22,8 @@
               <td><%= @customer.nickname %></td>
               <% if @customer.id == current_customer.id %>
               <td>
-                <%= link_to edit_customer_path(current_customer), class:"link2" do %>
-                  <i class="ri-user-settings-line fa-lg"><span style="font-size:small">プロフィール設定</span></i>
+                <%= link_to customer_path(current_customer), class:"button" do %>
+                  <i class="ri-user-settings-line fa-lg"></i>
                 <% end %>
               </td>
               <% end %>
@@ -35,13 +35,25 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="link">
-    <%= link_to "新規投稿" ,new_cosmetic_path, class:"link2" %>
-  </div>
   <div class="row">
-    <%= render "public/cosmetics/category",categories: @categories, cosmetics: @cosmetics %>
+    <div class="mx-auto my-3">
+      <% if @customer.id == current_customer.id %>
+        <span>
+          <%= link_to new_cosmetic_path, class:"button" do%>
+            <i class="ri-file-add-line"></i>新規投稿
+          <% end %>
+          <%= link_to calendars_path, class:"button" do %>
+            <i class="ri-calendar-event-line"></i>カレンダー
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render "public/cosmetics/category",categories: @categories, cosmetics: @cosmetics, customer: @customer %>
   </div>
   <div class="row">
     <%= render "public/cosmetics/index" , cosmetics: @cosmetics, customer: @customer %>

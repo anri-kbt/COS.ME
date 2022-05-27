@@ -11,9 +11,11 @@
     <%= link_to "新規投稿" ,new_cosmetic_path, class:"link2" %>
   </div>
   <div class="row">
-    <%= render "category",  cosmetics: @cosmetics, categories: @categories %>
+    <%= render "category",  cosmetics: @cosmetics, categories: @categories, customer: Customer.ids %>
   </div>
   <div class="row">
     <%= render "index", cosmetics: @cosmetics, customer: @customer %>
   </div>
+  
+  <%#= paginate cosmetics %>
 </div>

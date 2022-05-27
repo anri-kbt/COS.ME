@@ -7,8 +7,8 @@
 </div>
 <div class="container">
   <div class="row mx-5 pb-2">
-      <h4><span>MY情報</span></h4>
-      <%= link_to edit_customer_path(current_customer), class:"link2" do %>
+      <h4>MY情報</h4>
+      <%= link_to edit_customer_path(current_customer), class:"button" do %>
         <i class="ri-user-settings-line fa-lg"></i>
       <% end %>
   </div>
@@ -16,24 +16,24 @@
     <table class="table table-bordered col-10 mx-auto">
       <tbody>
         <tr>
-          <td width="150" class="bg-light">プロフィール画像</td>
-          <td><%= image_tag @customer.get_profile_image(100,100) %></td>
+          <td width="200" class="bg-light">プロフィール画像</td>
+          <td class="bg-light"><%= image_tag @customer.get_profile_image(100,100) %></td>
         </tr>
         <tr>
-          <td width="150" class="bg-light">ニックネーム</td>
-          <td width="200"><%= @customer.nickname %></td>
+          <td class="bg-light">ニックネーム</td>
+          <td class="bg-light"><%= @customer.nickname %></td>
         </tr>
         <tr>
-          <td width="150" class="bg-light">ユーザーID</td>
-          <td width="200"><%= @customer.user_id %></td>
+          <td class="bg-light">ユーザーID</td>
+          <td class="bg-light"><%= @customer.user_id %></td>
         </tr>
         <tr>
-          <td scope="col" class="bg-light">電話番号</td>
-          <td><%= @customer.call_number %></td>
+          <td class="bg-light">電話番号</td>
+          <td class="bg-light"><%= @customer.call_number %></td>
         </tr>
         <tr>
-          <td scope="col" class="bg-light">メールアドレス</td>
-          <td><%= @customer.email %></td>
+          <td class="bg-light">メールアドレス</td>
+          <td class="bg-light"><%= @customer.email %></td>
         </tr>
       </tbody>
     </table>

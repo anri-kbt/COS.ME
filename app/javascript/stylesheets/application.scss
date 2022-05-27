@@ -18,11 +18,18 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-image: url("../../assets/images/paper.jpg");
+}
+#main-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 footer {
   margin-top: auto;
   background-color: #BE8A62;
   color: white;
+  height: 70px;
 }
 
 .flash{
@@ -40,12 +47,12 @@ img{
 
 //button
 .btn {
-  display: block;
+  //display: block;
   position: relative;
   padding: 0.8em;
   text-align: center;
 	text-decoration: none;
-  width: 100px;
+  width: 150px;
   height: 50px;
   color: #BE8A62;
   background: #fff;
@@ -68,7 +75,7 @@ img{
   cursor: pointer;
   text-decoration: none;
   color: #BE8A62;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .btn2::after {
   position: absolute;
@@ -104,6 +111,14 @@ img{
   color         : rgba(190, 138, 98, 0.71);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+#keyword{
+  border: none;
+}
+#search-button{
+  background: #BE8A62;
+  color:#fff;
+  border: none;
+}
 
 .navbar {
   background-color: #BE8A62;
@@ -120,6 +135,16 @@ img{
 .link2{
   text-decoration: none;
   color: black ;
+}
+table {
+width: 100%;
+table-layout: fixed;
+word-break: break-all;
+word-wrap: break-all;
+}
+
+table th,table td{
+ word-wrap: break-word;
 }
 
 //homes
@@ -159,7 +184,7 @@ img{
 .menu-item{
   margin: 0 auto;
   width: 10em;
-  background-color: #ffb6c1;
+  background-color: #BD8C7D;
 }
 .service-box{
   display: flex;
@@ -191,7 +216,7 @@ img{
 }
 .tab-categories {
   width: 100%;
-  background: #555;
+  background: #BD8C7D;
   overflow-scrolling: touch;
    white-space: nowrap;
   overflow-x: scroll;
@@ -214,23 +239,15 @@ img{
   text-align: center;
   margin: 1vh;
 }
-.contents :hover {
-  background: #222; /* マウスホバー時の背景色 */
+.contents:hover {
+  background: #A86A56; /* マウスホバー時の背景色 */
+  text-decoration: none;
 }
 .contents span {
   color: #fff; /* メニューの文字色 */
   text-decoration: none;
 }
-.next-btn { /* 右側に固定する部分 */
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 25px; /* 固定部分の幅 */
-  height: 40px; /* メニューの高さに合わせる */
-  line-height: 40px;
-  background: #fff;
-  color: #555;
-}
+
 @media only screen and (min-width: 771px) { /* PCサイズでの指定 */
 .tab-categories ul {
   padding: 0;
@@ -288,7 +305,7 @@ img{
 
 .profile-image2 img{
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  border: 5px double #BE8A62;
+  border: 5px double #BD8C7D;
   padding: 5px;
   width: 150px;
   height: 150px;

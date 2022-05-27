@@ -16,7 +16,7 @@
           <div class="cosmetic-row">
               <p class="cosmetic-name">
                 <%= link_to cosmetic_path(cosmetic.id),class:"link2" do %>
-                  <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
+                  <strong><i class="ri-vip-diamond-line"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
                 <% end %>
               </p>
               <p style="font-size:small">説明：<%= cosmetic.introduction.truncate(15) %></p>
@@ -26,5 +26,3 @@
       </div>
     <% end %>
   </div>
-
-<%#= paginate cosmetics %>

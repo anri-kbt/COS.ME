@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resource :cosme_comments ,only:[:destroy]
   end
   scope module: :public do
-    resources :customers ,only:[:index,:show,:edit,:update]
+    resources :customers ,only:[:show,:edit,:update]
     get 'customers/:id/mycosmetics' => 'customers#mycosmetics',as: :mycosmetics
     get 'customers/withdrawal' => 'customers#withdrawal'
     patch 'customers/out/:id' => 'customers#out',as: :out

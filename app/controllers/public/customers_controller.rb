@@ -22,7 +22,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customers_path ,notice: "登録情報を更新しました"
+      redirect_to customer_path(current_customer) ,notice: "登録情報を更新しました"
     else
       render "show"
     end
@@ -39,11 +39,11 @@ class Public::CustomersController < ApplicationController
       @customer = current_customer
       @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer).order("created_at DESC")
       @categories = Category.all
-      #@category = Cosmetic.find_by(category_id: params[:category_id])
       #category.cosmetics = Category.cosmetics.where(customer_id: current_customer.id)
     else
       @customer = Customer.find(params[:id])
-      @cosmetics = Cosmetic.public_status.where(customer_id: @customer.id).includes(:customer).order("created_at DESC")
+      @cosmetics = Cosmetic.where(customer_id: @customer.id, public_status: 0).includes(:customer).order("created_at DESC")
+      @categories = Category.all
     end
 
     if params[:category_id].present?

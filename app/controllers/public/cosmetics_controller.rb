@@ -36,8 +36,7 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def index
-    @customer = current_customer
-    @cosmetics = Cosmetic.public_status
+    @cosmetics = Cosmetic.where(public_status: 0)
     @categories = Category.all
     if params[:category_id].present?
       #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行

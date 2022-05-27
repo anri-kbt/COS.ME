@@ -5,74 +5,61 @@
     </div>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-11">
+    <div class="px-3">
       <h4 class="pb-5 mt-3">
         <span>MY情報編集</span>
       </h4>
     </div>
   </div>
 
-  <%= form_with model:@customer, url: customer_path(@customer),local:true do |f| %>
-    <div class="form-group row">
-      <div class="col-4">
-        <%= f.label :プロフィール画像 %>
-      </div>
-      <div class="col-8">
-        <%= f.file_field :profile_image %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-4">
-        <%= f.label :ニックネーム %>
-      </div>
-      <div class="col-8">
-        <%= f.text_field :nickname %>
+  <%= form_with model: @customer, url: customer_path(@customer),local:true do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="text-center mb-5">
+        <div>
+          <%= f.label :プロフィール画像 %>
+        </div>
+        <div>
+          <% if @customer.profile_image.attached? %>
+            <%= image_tag @customer.profile_image %>
+          <% end %>
+        </div>
+          <span style="font-size : small">画像を変更したい場合は下記より選択してください</span>
+          <%= f.file_field :profile_image %>
       </div>
     </div>
-
-    <div class="form-group row">
-      <div class="col-4">
-        <%= f.label :ユーザーID %>
-      </div>
-      <div class="col-8">
-        <%= f.text_field :user_id %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-4">
-        <%= f.label :電話番号 %>
-      </div>
-      <div class="col-8">
-        <%= f.text_field :call_number %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-4">
-        <%= f.label :メールアドレス %>
-      </div>
-      <div class="col-8">
-        <%= f.email_field :email %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-4"></div>
-      <div class="col-8">
-        <%= link_to"退会する",out_path(@customer), method: :patch,"data-confirm"=>"本当に退会しますか？" %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= f.label :ニックネーム %></td>
+            <td><%= f.text_field :nickname %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :ユーザーID %></td>
+            <td><%= f.text_field :user_id %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :電話番号 %></td>
+            <td><%= f.text_field :call_number %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :メールアドレス %></td>
+            <td><%= f.email_field :email %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= link_to"退会する",out_path(@customer), method: :patch,"data-confirm"=>"本当に退会しますか？" %></td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+      <div class="text-center mt-5 mb-5">
+        <%= f.submit" 編集内容を保存 " ,class:"button"%>
       </div>
     </div>
-
-    <div class="form-group row">
-      <div class="col-4"></div>
-      <div class="col-8">
-        <%= f.submit" 編集内容を保存 " %>
-      </div>
-    </div>
-
+  </div>
   <% end %>
 </div>
