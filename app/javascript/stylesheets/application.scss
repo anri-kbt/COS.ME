@@ -34,7 +34,7 @@ footer {
 
 .flash{
   .notice {
-   background-color: #ff8c00;
+   background-color: #BD8C7D;
    color: #fff;
    text-align: center;
  }
@@ -322,6 +322,21 @@ table th,table td{
 .cosmetic-row p{
   margin: 0;
 }
+//pagenate
+.pagination {
+  justify-content: center;
+}
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+.pagination>.active>a {
+  background: #BD8C7D;
+  border-radius: 15px;
+}
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
 
 
 //calendar
@@ -353,9 +368,6 @@ table th,table td{
   margin: 1rem;
 }
 .date-container {
-   //display: flex;
-   //flex-wrap: wrap;
-  // align-items: stretch;
    margin: 0 auto;
    width: 90%;
 }

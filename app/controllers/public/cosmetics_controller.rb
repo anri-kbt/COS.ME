@@ -19,7 +19,7 @@ class Public::CosmeticsController < ApplicationController
     else
       @cosmetic.brand_id = brand.id  #同じブランド名であれば同じidで保存
     end
-    if @cosmetic.save!
+    if @cosmetic.save
       if @cosmetic.public_status == 0
         redirect_to cosmetics_path ,notice: "新しいコスメを投稿しました"
       else @cosmetic.public_status == 1
@@ -36,7 +36,7 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def index
-    @cosmetics = Cosmetic.where(public_status: 0)
+    @cosmetics = Cosmetic.where(public_status: 0).page(params[:page]).per(6)
     @categories = Category.all
     if params[:category_id].present?
       #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
