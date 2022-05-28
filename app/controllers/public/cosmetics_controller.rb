@@ -36,12 +36,12 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def index
-    @cosmetics = Cosmetic.where(public_status: 0).page(params[:page]).per(6)
+    @cosmetics = Cosmetic.where(public_status: 0).page(params[:page]).per(12)
     @categories = Category.all
     if params[:category_id].present?
       #presentメソッドでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
       @category = Category.find(params[:category_id])
-      @cosmetics = @category.cosmetics
+      @cosmetics = @category.cosmetics.where(public_status: 0).page(params[:page]).per(12)
     end
   end
 
@@ -80,11 +80,12 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def search
+    @cosmetics = Cosmetic.where(public_status: 0).page(params[:page]).per(12)
     if params[:keyword].present?
       @cosmetics = Cosmetic.where('cosmetic_name LIKE ?', "%#{params[:keyword]}%")
       @keyword = params[:keyword]
     else
-      @cosmetics = Cosmetic.all
+      @cosmetics = Cosmetic.page(params[:page]).per(12)
     end
   end
 

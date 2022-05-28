@@ -1,4 +1,4 @@
-
+<div class="container">
   <div id="tall">
     <div id="theTarget">
       <div class="image1"></div>
@@ -8,20 +8,32 @@
       <div class="image5"></div>
     </div>
   </div>
-  <div class="container">
-    <!--div class="row"-->
-      <div class="menu">
-        <div class="menu-box">
-          <div class="menu-item">
-            <%= link_to 'Service',homes_about_path, class:"link" %>
-          </div>
-          <div class="menu-item">
-            <%= link_to 'Cosmetics',cosmetics_path, class:"link" %>
-          </div>
-          <div class="menu-item">
-            <%#= link_to 'My Room',mycosmetics_path(current_customer.id), class:"link" %>
-          </div>
-        </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <%= image_tag 'COS.ME.png', size:"250x150" %>
+      <h3>COS.ME</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-sm-9 mx-auto text-center">
+      <span>
+        自分のコスメを可視化・整理できる
+        <b style="color:#BD8C7D">"コスメボックス"</b>をスマホの中に。
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="menu">
+      <div class="menu-item">
+        <%= link_to 'Service',homes_about_path, class:"link2" %>
+      </div>
+      <div class="menu-item">
+        <%= link_to 'Cosmetics',cosmetics_path, class:"link2" %>
       </div>
     </div>
   </div>
+</div>

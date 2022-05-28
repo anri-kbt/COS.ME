@@ -126,7 +126,17 @@ img{
 }
 .title{
   margin: 2rem auto;
-  text-align: center;
+  position: relative;
+}
+.title img{
+  transform: rotate( -20deg );
+}
+.title h3{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
 }
 .link{
   text-decoration: none;
@@ -136,6 +146,7 @@ img{
   text-decoration: none;
   color: black ;
 }
+
 table {
 width: 100%;
 table-layout: fixed;
@@ -174,18 +185,17 @@ table th,table td{
 .menu{
   display: flex;
   justify-content: center;
-}
-.menu-box{
-  display: flex;
-  margin: 5rem 0;
+  margin: 5rem auto;
   width: 80%;
   text-align: center;
 }
 .menu-item{
-  margin: 0 auto;
-  width: 10em;
-  background-color: #BD8C7D;
+  height: 50px;
+  width: 150px;
+  margin: 5px;
+  border: 2px solid #BD8C7D;
 }
+
 .service-box{
   display: flex;
   justify-content: center;
@@ -202,7 +212,6 @@ table th,table td{
 .icon{
   margin: 1rem 2rem 2rem;
 }
-
 .message{
   text-align: center;
   margin: 3rem auto;
@@ -322,22 +331,31 @@ table th,table td{
 .cosmetic-row p{
   margin: 0;
 }
+
 //pagenate
 .pagination {
   justify-content: center;
 }
+.page-item .page-link{
+  border-radius: 10px;
+}
+.page-item {
+  &.active .page-link {
+    background-color: #BD8C7D;
+    border-radius: 10px;
+    border-color: #BD8C7D;
+  }
+}
 .pagination>li>a {
-  border: none;
-  color: #696969;
+  border: 1px #BD8C7D;
+  color: #696969;   /*文字の色を変える*/
 }
-.pagination>.active>a {
-  background: #BD8C7D;
-  border-radius: 15px;
-}
+/*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  border-radius: 15px;
+  border-radius: 15px;    /*角を丸くする*/
+  color: #BD8C7D;
+  border-color: #BD8C7D;
 }
-
 
 //calendar
 .calendar-container {

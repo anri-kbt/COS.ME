@@ -1,10 +1,12 @@
 <div class="container">
-    <div class="row">
-      <div class="title">
-        <h3>COSMETIC DETAIL</h3>
-      </div>
+  <div class="row">
+    <div class="title">
+      <%= image_tag 'cosmetics.png', size:"250x150" %>
+      <h3>COSMETIC DETAIL</h3>
     </div>
-
+  </div>
+</div>
+<div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="text-center">
@@ -63,7 +65,9 @@
                   <%#= f.submit "送信する" %>
                 <% end %>
                 <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-                  <%= image_tag cosme_comment.customer.get_profile_image(40,40) %>
+                  <span class="profile-image">
+                    <%= image_tag cosme_comment.customer.get_profile_image(40,40) %>
+                  </span>
                   <%= cosme_comment.customer.nickname %>
                   <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
                   <%= cosme_comment.comment %>
@@ -71,7 +75,7 @@
                     <%= link_to cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link2" do %>
                       <i class="ri-delete-bin-7-line"></i>
                     <% end %>
-                  <% end %>
+                  <% end %></br>
                 <% end %>
               </td>
             </tr>

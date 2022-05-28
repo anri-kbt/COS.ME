@@ -1,17 +1,22 @@
 <div class="container py-5">
   <div class="row">
     <div class="title">
+      <%= image_tag 'cosmetics.png', size:"250x150" %>
       <h3>COSMETICS</h3>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="link">
-    <%= link_to "新規投稿" ,new_cosmetic_path, class:"link2" %>
-  </div>
   <div class="row">
     <%= render "category",  cosmetics: @cosmetics, categories: @categories, customer: Customer.ids %>
+  </div>
+  <div class="row">
+    <div class="pl-5">
+      <%= link_to new_cosmetic_path, class:"button" do %>
+        <i class="ri-file-add-line"></i><span>New</span>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <%= render "index", cosmetics: @cosmetics, customer: @customer %>
