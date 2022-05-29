@@ -90,7 +90,7 @@ class Public::CosmeticsController < ApplicationController
   end
 
   def destroy
-    @cosmetic.find(params[:id])
+    @cosmetic = Cosmetic.find(params[:id])
     @cosmetic.destroy
     redirect_to cosmetics_path
   end
