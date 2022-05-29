@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers ,only:[:index,:show,:update]
-    resources :cosmetics ,only:[:index,:show,:destroy]
-    resource :cosme_comments ,only:[:destroy]
+    resources :cosmetics ,only:[:index,:show,:destroy] do
+      resource :cosme_comments ,only:[:destroy]
+    end
   end
   scope module: :public do
     resources :customers ,only:[:show,:edit,:update]

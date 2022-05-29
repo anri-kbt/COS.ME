@@ -60,7 +60,7 @@
                   <%= cosme_comment.customer.nickname %>
                   <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
                   <%= cosme_comment.comment %>
-                    <%= link_to "コメントを削除する", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link2","data-confirm"=>"本当に削除しますか？" %></br>
+                    <%= link_to "コメントを削除する", admin_cosmetic_cosme_comments_path(cosme_comment.cosmetic_id,comment_id: cosme_comment.id), method: :delete, class: "link2","data-confirm"=>"本当に削除しますか？" %></br>
                 <% end %>
               </td>
             </tr>

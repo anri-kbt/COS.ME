@@ -34,18 +34,17 @@
         <%elsif admin_signed_in?%>
           <li>
             <%=link_to admin_cosmetics_path,class:'nav-link text-light' do %>
-              <%= image_tag 'lip.png' ,size:'20x20'%>
-              <span>投稿一覧</span>
+              <i class="ri-eye-close-fill"></i><span>投稿一覧</span>
             <%end%>
           </li>
           <li>
             <%=link_to admin_customers_path,class:'nav-link text-light' do %>
-              <span>会員一覧</span>
+              <i class="ri-user-line"></i><span>会員一覧</span>
             <%end%>
           </li>
           <li>
             <%= link_to destroy_admin_session_path,method: :delete,class:'nav-link text-light' do %>
-              <span>ログアウト</span>
+              <i class="ri-logout-box-r-line"></i><span>ログアウト</span>
             <%end%>
           </li>
         <% else %>
