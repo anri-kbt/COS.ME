@@ -20,10 +20,10 @@ class Public::CosmeticsController < ApplicationController
       @cosmetic.brand_id = brand.id  #同じブランド名であれば同じidで保存
     end
     if @cosmetic.save
-      if @cosmetic.public_status == 0
+      if params[:cosmetic][:public_status] == 'public'
         redirect_to cosmetics_path ,notice: "新しいコスメを投稿しました"
-      else @cosmetic.public_status == 1
-        redirect_to mycosmetics_path(current_customer.id)
+      else
+        redirect_to mycosmetics_path(current_customer.id),notice: "新しいコスメを投稿しました"
       end
     else
       render :new
@@ -53,7 +53,7 @@ class Public::CosmeticsController < ApplicationController
 
   def edit
     @cosmetic = Cosmetic.find(params[:id])
-    @brand = Brand.find(params[:id])
+    @brand = Brand.find(@cosmetic.brand.id)
     if @cosmetic.customer==current_customer
       render :edit
     else
@@ -73,7 +73,11 @@ class Public::CosmeticsController < ApplicationController
       @cosmetic.brand_id = brand.id  #同じブランド名であれば同じidで保存
     end
     if @cosmetic.update(cosmetic_params)
-      redirect_to cosmetic_path(@cosmetic.id) ,notice: "コスメレビューを更新しました"
+      if params[:cosmetic][:public_status] == 'public'
+        redirect_to cosmetics_path ,notice: "コスメレビューを更新しました"
+      else
+        redirect_to mycosmetics_path(current_customer.id),notice: "コスメレビューを更新しました"
+      end
     else
       render "edit"
     end
