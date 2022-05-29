@@ -8,6 +8,7 @@
 </div>
 <div class="container">
   <div class="row">
+   <%= form_with model: @customer,url:admin_customer_path,method: :patch,local:true do |f|%>
     <table class="table table-borderless mb-5">
       <tbody>
         <tr>
@@ -30,7 +31,6 @@
           <td>メールアドレス</td>
           <td><%= @customer.email %></td>
         </tr>
-        <%= form_with model: @customer,url:admin_customer_path,method: :patch,local:true do |f|%>
         <tr>
           <td>
             <%= f.label :会員ステータス%>
@@ -42,9 +42,8 @@
             <%= f.submit "会員のステータスを変更" , class:"button", "data-confirm"=>"本当に変更してもよろしいですか？" %>
           </td>
         </tr>
-        <% end %>
       </tbody>
     </table>
+    <% end %>
   </div>
 </div>
-

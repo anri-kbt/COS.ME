@@ -1,4 +1,7 @@
 class Admin::CosmeticsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery with: :exception
 
   def index
     @cosmetics = Cosmetic.all.order(created_at: :desc).all.page(params[:page]).per(12)
