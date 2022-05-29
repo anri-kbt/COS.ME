@@ -9,6 +9,7 @@
     box-sizing: border-box;
     font-family: 'Quattrocento', serif;
 }
+
 html , body {
     height: 100%;
     margin: 0;
@@ -111,6 +112,33 @@ img{
   color         : rgba(190, 138, 98, 0.71);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+
+a.button2 {
+  border-radius: 0;
+}
+a.button2:before,
+a.button2:after {
+  position: absolute;
+  width: 150px;
+  height: 2px;
+  content: '';
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background: #fff;
+}
+a.button2:before {
+  top: 0;
+  left: 0;
+}
+a.button2:after {
+  right: 0;
+  bottom: 0;
+}
+a.button2:hover:before,
+a.button2:hover:after {
+  width: 0;
+}
+
 #keyword{
   border: none;
 }
@@ -189,25 +217,33 @@ table th,table td{
   width: 80%;
   text-align: center;
 }
-.menu-item{
-  height: 50px;
-  width: 150px;
-  margin: 5px;
-  border: 2px solid #BD8C7D;
-}
-
 .service-box{
   display: flex;
+  flex-wrap: wrap;
+  width: 320px;
   justify-content: center;
-  width: 100%;
+  text-align: center;
   margin: 0 auto;
 }
+@media screen and (min-width: 768px) and (max-width: 991.9px){
+  /* 768~991.9pxまで */
+  .service-box{
+    width: 640px;
+  }
+}
+@media screen and (min-width: 992px){
+  /* 992以上 */
+  .service-box{
+    width: 960px;
+  }
+}
 .service-item{
-  width: 45%;
-  margin: 1rem 2rem;
+  color: white;
+  width: 300px;
   text-align: center;
   border: solid;
   padding: 2rem;
+  background: #D1BFA7;
 }
 .icon{
   margin: 1rem 2rem 2rem;
@@ -270,7 +306,6 @@ table th,table td{
 }
 
 .cosmetic-box{
-  //display:inline-block;
   display: flex;
   flex-wrap: wrap;
   width: 320px;

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :customers ,only:[:index,:edit,:show,:update,:destroy]
+    resources :customers ,only:[:index,:show,:update,:destroy]
     resources :cosmetics ,only:[:index,:show,:destroy]
     resource :cosme_comments ,only:[:destroy]
   end

@@ -1,36 +1,43 @@
 <div class="container py-5">
   <div class="row">
     <div class="title">
+      <%= image_tag 'cosmetics.png', size:"250x150" %>
       <h3>CUSTOMER'S COSMETICS</h3>
     </div>
   </div>
 </div>
 
-  <div class="cosmetic-box">
-    <% @cosmetics.each do |cosmetic| %>
-      <div class="cosmetic-container">
-        <div class="profile-image">
-          <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
-          <span><%= cosmetic.customer.nickname %></span></br>
-        </div>
-        <div class="cosmetic-image">
-        <%= link_to admin_cosmetic_path(cosmetic.id) do %>
-          <%= image_tag cosmetic.cosmetic_image ,size:'100x100' %>
-        <% end %>
-        </div>
-        <div class="cosmetic-body">
-          <div class="cosmetic-row">
-              <p class="cosmetic-name">
-                <%= link_to admin_cosmetic_path(cosmetic.id),class:"link2" do %>
-                  <strong><i class="far fa-flag"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
-                <% end %>
-              </p>
-              <p class="card-text">説明：<%= cosmetic.introduction %></p>
-              <span><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
+<div class="container">
+  <div class="row">
+    <%= render "public/cosmetics/category",  cosmetics: @cosmetics, categories: @categories, customer: Customer.ids %>
+  </div>
+  <div class="row">
+    <div class="cosmetic-box">
+      <% @cosmetics.each do |cosmetic| %>
+        <div class="cosmetic-container">
+          <div class="profile-image">
+            <%= image_tag cosmetic.customer.get_profile_image(40,40) %>
+            <span><%= cosmetic.customer.nickname %></span></br>
+          </div>
+          <div class="cosmetic-image">
+          <%= link_to admin_cosmetic_path(cosmetic.id) do %>
+            <%= image_tag cosmetic.cosmetic_image ,size:'100x100' %>
+          <% end %>
+          </div>
+          <div class="cosmetic-body">
+            <div class="cosmetic-row">
+                <p class="cosmetic-name">
+                  <%= link_to admin_cosmetic_path(cosmetic.id),class:"link2" do %>
+                    <strong><i class="ri-vip-diamond-line"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
+                  <% end %>
+                </p>
+                <p style="font-size:small">説明：<%= cosmetic.introduction.truncate(15) %></p>
+                <span style="font-size:small"><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-<%#= paginate cosmetics %>
+  <%= paginate @cosmetics %>
 </div>

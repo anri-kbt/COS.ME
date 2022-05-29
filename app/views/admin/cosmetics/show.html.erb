@@ -1,17 +1,23 @@
 <div class="container">
-    <div class="row">
-      <div class="title">
-        <h3>CUSTOMER'S COSMETIC DETAIL</h3>
-      </div>
+  <div class="row">
+    <div class="title">
+      <%= image_tag 'cosmetics.png', size:"250x150" %>
+      <h3>CUSTOMER'S COSMETIC DETAIL</h3>
     </div>
-
+  </div>
+</div>
+<div class="container">
     <div class="row">
-      <div class="col-6">
-        <%=image_tag @cosmetic.cosmetic_image,size:"350x250",class:"d-block mx-auto img-fluid w-75"%>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="text-center">
+          <%= image_tag @cosmetic.customer.get_profile_image(40,40) %>
+          <span><%= @cosmetic.customer.nickname %></span>
+        </div>
+        <%=image_tag @cosmetic.cosmetic_image,size:"350x250" ,class:"d-block mx-auto img-fluid w-75"%>
       </div>
-      <div class="col-6">
-      <table class="table table-borderless">
-        <tbody>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <table class="table table-borderless">
+          <tbody>
             <tr>
                 <td class="col-3">ブランド名</td>
                 <td class="col-6"><%=@cosmetic.brand.brand_name%></td>
@@ -54,17 +60,17 @@
                   <%= cosme_comment.customer.nickname %>
                   <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
                   <%= cosme_comment.comment %>
-                    <%= link_to "コメントを削除する", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link","data-confirm"=>"本当に削除しますか？" %>
+                    <%= link_to "コメントを削除する", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link2","data-confirm"=>"本当に削除しますか？" %></br>
                 <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to "この投稿を削除する", admin_cosmetic_path(@cosmetic.id), method: :delete,"data-confirm"=>"本当に削除しますか？" ,class:"button" %>
               </td>
             </tr>
         </tbody>
       </table>
       </div>
-    </div>
-    <div class="row">
-      <div>
-        <%= link_to "この投稿を削除する", admin_cosmetic_path(@cosmetic.id), method: :delete,"data-confirm"=>"本当に削除しますか？" ,class:"link2" %>
-      </div>
-    </div>
+    </div
 </div>
