@@ -41,9 +41,9 @@ class Public::CalendarsController < ApplicationController
 
   def new
     day = params[:used_date]
-    @calendar=Calendar.new
+    @calendar = Calendar.new
     @calendar.used_date = day
-    @cosmetics=Cosmetic.where(customer_id: current_customer.id)
+    @cosmetics = Cosmetic.where(customer_id: current_customer.id)
   end
 
   def create

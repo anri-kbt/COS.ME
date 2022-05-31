@@ -3,13 +3,16 @@ class Calendar < ApplicationRecord
     has_many :cosmetics, through: :calendar_cosmes, dependent: :destroy
     belongs_to :customer
 
+    #def self.print_dates(year,month)
+        #dates = (Date.new(year,month, 1)...Date.new(year,month + 1, 1)).to_a
+        #dates.each do |d|
+        #    d
+        #end
+    #end
 
-
-    def self.print_dates(year,month)
-        dates = (Date.new(year,month, 1)...Date.new(year,month + 1, 1)).to_a
-        dates.each do |d|
-            d
-        end
-    end
+    with_options presence: true do
+        validates :used_date
+        validates :cosmetic_ids
+  end
 
 end

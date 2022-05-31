@@ -2,34 +2,37 @@
   <div class="row">
     <div class="title">
       <%= image_tag 'calendars.png', size:"250x150" %>
-      <h3>SELECT MY COSMETIC</h3>
+      <h3>SELECT MY COSMETICS</h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-6 mx-auto pb-5">
+    <div class="mx-auto pb-5 px-4">
       <%= form_with model: @calendar,url:calendars_path,method: :post,local:true do |f| %>
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-5">
             <%= f.label :used_date, "使用日:" ,class:"pl-3" %>
           </div>
-          <div class="col-8">
+          <div class="col-7">
             <%= f.date_field :used_date %>
           </div>
         </div>
-
         <div class="form-group row">
-          <div class="col-4">
-            <%= f.collection_check_boxes(:cosmetic_ids, @cosmetics, :id, :cosmetic_image) do |b| %>
-              <div>
+          <div class="date-image">
+            <div style="display:inline;">
+              <%= f.collection_check_boxes(:cosmetic_ids, @cosmetics, :id, :cosmetic_image) do |b| %>
                 <%= b.label { b.check_box + image_tag(b.text.record.cosmetic_image,size:"80x80") } %>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-4"></div>
-          <div class="col-8">
-            <%= f.submit "カレンダー登録" %>
+          <div class="col-5"></div>
+          <div class="col-7">
+            <% if @cosmetics.present? %>
+              <%= f.submit "カレンダー登録" %>
+            <% else %>
+              <p>まずは<%= link_to "こちら", new_cosmetic_path %>からMYコスメを新規投稿してください</p>
+            <% end %>
           </div>
         </div>
       <% end %>

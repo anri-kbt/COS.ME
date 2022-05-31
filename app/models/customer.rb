@@ -22,6 +22,13 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  def self.guest
+    find_or_create_by!(nickname: 'guestcustomer' ,email: 'guestguest@example.com', user_id: 'guest', call_number: '00000000000') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.nickname = "guestcustomer"
+    end
+  end
+
   def get_profile_image(width,height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image2.png')

@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :ensure_guest_customer, only: [:edit]
   protect_from_forgery with: :exception
 
   def index
@@ -68,5 +69,12 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:nickname,:user_id ,:call_number,:email,:profile_image)
+  end
+
+  def ensure_guest_customer
+    @customer = Customer.find(params[:id])
+    if @customer.nickname == "guestcustomer"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません'
+    end
   end
 end

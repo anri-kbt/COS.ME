@@ -9,8 +9,10 @@
 <div class="container">
   <div class="row mx-5 pb-2">
       <h4>MY情報</h4>
-      <%= link_to edit_customer_path(current_customer), class:"button" do %>
-        <i class="ri-user-settings-line fa-lg"></i>
+      <% if @customer.nickname != "guestcustomer" %>
+        <%= link_to edit_customer_path(current_customer), class:"button" do %>
+          <i class="ri-user-settings-line fa-lg"></i>
+        <% end %>
       <% end %>
   </div>
   <div class="row">
