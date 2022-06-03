@@ -21,6 +21,8 @@
 毎日のメイクの記録をしたり、コスメのレビューを保存できる。
 
 ## 設計書
+#ER図
+https://drive.google.com/file/d/13QsSGtGTgyMHUqwS98Gg9yFe5aKQX735/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
