@@ -2,41 +2,18 @@ class Public::CalendarsController < ApplicationController
   before_action :authenticate_customer!
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-  
+
   def index
     @calendars = Calendar.where(customer_id: current_customer.id).includes(:customer)
     @cosmetics = Cosmetic.where(customer_id: current_customer.id).includes(:customer)
     @dates = (Date.new(Date.today.year,Date.today.month, 1)...Date.new(Date.today.year,Date.today.month + 1, 1)).to_a
-   
+
     @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id).index_by { |e| e.used_date.strftime("%y-%m-%d") }
 
     if params[:month].present?
       dt = params[:month].to_date
       @dates = (Date.new(dt.year,dt.month, 1)...Date.new(dt.year,dt.month + 1, 1)).to_a
     end
-    #month = params[:month].to_date
-    #calendar = Calendar.where(used_date: month..month.end_of_month)
-    #@month_cosme = Cosmetic.calendar.where(customer_id: current_customer.id)
-   # @calendar = Calendar.where(used_date: Time.current.all_month, customer_id: current_customer.id)
-    #@hash = Hash.new
-    #search_date = params[:month]
-    #@month_calendar = Calendar.where(used_date: search_date.in_time_zone.all_month)
-  
-    #その月に使ったcosmeticsのデータをすべて取ってくる
-    #@datesを回して取ってきたcosmeticsのカレンダーのused_dateのデータが存在しているどうかをチェック
-    #Hashを宣言する
-    #HashにDateのキーを用意する
-    #各日付のキーに対してcosmeticsが存在していればそのデータを、存在していなければ空の配列を入れる
-    #その内容を@変数でビューに渡す
-  
-    #@dates.each do |d|
-     # @calendar.each do |c|
-      #  if c.used_date.to_date == d
-       #   @hash[d] = c.cosmetics
-      #  end
-      #  @hash[d] = '' if @hash[d].blank?
-    #  end
-  #  end
   end
 
   def new
@@ -54,7 +31,7 @@ class Public::CalendarsController < ApplicationController
     @cosmetic_ids.shift
       @cosmetic_ids.each do |cosmetic_id|
       cosmetic = Cosmetic.find(cosmetic_id.to_i)
-      @calendar.cosmetic_id = cosmetic_id
+      #@calendar.cosmetic_id = cosmetic_id
       end
     if @calendar.save!
       redirect_to calendars_path,notice:"カレンダーを追加しました"
@@ -71,6 +48,12 @@ class Public::CalendarsController < ApplicationController
   def update
     @calendar = Calendar.find(params[:id]).update(calendar_params)
     redirect_to calendars_path, notice:"カレンダーを更新しました"
+  end
+
+  def destroy
+    @calendar = Calendar.find(params[:id])
+    @calendar.destroy
+    redirect_to calendars_path(@calendar.id), notice:"カレンダーを削除しました"
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_000019) do
+ActiveRecord::Schema.define(version: 2022_05_31_113601) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,17 +63,13 @@ ActiveRecord::Schema.define(version: 2022_05_19_000019) do
     t.integer "calendar_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["calendar_id"], name: "index_calendar_cosmes_on_calendar_id"
-    t.index ["cosmetic_id"], name: "index_calendar_cosmes_on_cosmetic_id"
   end
 
   create_table "calendars", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "cosmetic_id"
     t.datetime "used_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cosmetic_id"], name: "index_calendars_on_cosmetic_id"
     t.index ["customer_id"], name: "index_calendars_on_customer_id"
   end
 
@@ -123,11 +119,15 @@ ActiveRecord::Schema.define(version: 2022_05_19_000019) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "cosmetic_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "calendar_cosmes", "calendars"
-  add_foreign_key "calendar_cosmes", "cosmetics"
-  add_foreign_key "calendars", "cosmetics"
   add_foreign_key "calendars", "customers"
   add_foreign_key "cosmetics", "brands"
   add_foreign_key "cosmetics", "categories"

@@ -27,9 +27,15 @@
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-5"></div>
-          <div class="col-7">
-            <%= f.submit "カレンダー更新"%>
+          <div class="col-6">
+            <%= button_tag :type => "submit", :class =>"button" do %>
+              <i class="ri-calendar-check-fill"><span>カレンダー更新</span></i>
+            <% end %>
+          </div>
+          <div class="col-6">
+            <%= link_to calendar_path(@calendar.id),method: :delete,"data-confirm"=>"本当に削除しますか？", class:"button" do %>
+              <i class="ri-delete-bin-7-line"><span>カレンダー削除</span></i>
+            <% end %>
           </div>
         </div>
       <% end %>

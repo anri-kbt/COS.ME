@@ -1,0 +1,13 @@
+<% if cosmetic.favorited_by?(current_customer) %>
+  <p class="d-block mx-auto img-fluid w-75">
+    <%= link_to cosmetic_favorites_path(cosmetic), method: :delete, remote: true, class:"link2" do %>
+      <i class="ri-heart-3-fill"></i><%= cosmetic.favorites.count %> いいね
+    <% end %>
+  </p>
+  <% else %>
+  <p class="d-block mx-auto img-fluid w-75">
+    <%= link_to cosmetic_favorites_path(cosmetic), method: :post, remote: true, class:"link2" do %>
+      <i class="ri-heart-3-line"></i><%= cosmetic.favorites.count %> いいね
+    <% end %>
+  </p>
+<% end %>

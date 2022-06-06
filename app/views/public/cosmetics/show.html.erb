@@ -13,7 +13,10 @@
           <%= image_tag @cosmetic.customer.get_profile_image(40,40) %>
           <span><%= @cosmetic.customer.nickname %></span>
         </div>
-        <%=image_tag @cosmetic.cosmetic_image,size:"350x250" ,class:"d-block mx-auto img-fluid w-75"%>
+        <%=image_tag @cosmetic.cosmetic_image,size:"350x250" ,class:"d-block mx-auto img-fluid w-75" %>
+        <div id="favorite_buttons_<%= @cosmetic.id %>">
+          <%= render "public/favorites/favorite_buttons", cosmetic: @cosmetic %>
+        </div>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12">
         <table class="table table-borderless">

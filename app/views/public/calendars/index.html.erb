@@ -34,11 +34,11 @@
           <div class="date-image">
             <%= d %>
             <% if @calendar[d.strftime("%y-%m-%d")].present? %>
-              <%= link_to edit_calendar_path(@calendar[d.strftime("%y-%m-%d")].id) ,class:"link2" do %>
+              <%= link_to edit_calendar_path(@calendar[d.strftime("%y-%m-%d")].id) ,class:"text-dark" do %>
                 <i class="ri-edit-box-fill"></i>
               <% end %>
             <% else %>
-              <%= link_to new_calendar_path(used_date: d) ,class:"link2" do %>
+              <%= link_to new_calendar_path(used_date: d) ,class:"text-dark" do %>
                 <i class="ri-add-circle-line"></i>
               <% end %></br>
             <% end %>

@@ -3,14 +3,14 @@
     <div class="category-contents">
       <div class="contents">
         <span>
-          <%= link_to "ALL", cosmetics_path ,class:"link" %>
+          <%= link_to "ALL", cosmetics_path ,class:"text-white" %>
           (<%= cosmetics.count %>)
         </span>
       </div>
       <% categories.each do |category| %>
       <div class="contents" >
         <span>
-          <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"link" %>
+          <%= link_to category.category_name , cosmetics_path(category_id: category.id), class:"text-white" %>
           (<%= category.cosmetics.where(customer_id: customer, public_status: 0).count %>)
         </span>
       </div>

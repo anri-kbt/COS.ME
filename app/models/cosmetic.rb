@@ -2,9 +2,12 @@ class Cosmetic < ApplicationRecord
   belongs_to :customer
   belongs_to :brand
   belongs_to :category
-  has_many :cosme_comments, dependent: :destroy
-  has_many :calendar_cosmes, dependent: :destroy
-  has_many :calendars, through: :calendar_cosmes, dependent: :destroy
+  has_many :cosme_comments
+  has_many :calendar_cosmes
+  has_many :calendars, through: :calendar_cosmes
+  has_many :favorites
+  
+  
 
   has_one_attached :cosmetic_image
 
@@ -27,6 +30,10 @@ class Cosmetic < ApplicationRecord
 
   def get_cosmetic_image
     cosmetic_image
+  end
+
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
 end
