@@ -14,8 +14,12 @@
           <span><%= @cosmetic.customer.nickname %></span>
         </div>
         <%=image_tag @cosmetic.cosmetic_image,size:"350x250" ,class:"d-block mx-auto img-fluid w-75" %>
+
         <div id="favorite_buttons_<%= @cosmetic.id %>">
-          <%= render "public/favorites/favorite_buttons", cosmetic: @cosmetic %>
+          <div class="d-block mx-auto img-fluid w-75">
+            <%= render "public/favorites/favorite_buttons", cosmetic: @cosmetic %>
+
+          </div>
         </div>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12">
@@ -53,7 +57,6 @@
                 <% else  @cosmetic.public_status_private? %>
                   <td class="text-success font-weight-bold">自分だけ公開中</td>
                 <%end%>
-              <% else %>
               <% end %>
             </tr>
 
@@ -62,24 +65,7 @@
                 <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
               </td>
               <td class="col-6">
-                <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
-                  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-                  <input type="submit" value"送信する" class="button">
-                  <%#= f.submit "送信する" %>
-                <% end %>
-                <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-                  <span class="profile-image">
-                    <%= image_tag cosme_comment.customer.get_profile_image(40,40) %>
-                  </span>
-                  <%= cosme_comment.customer.nickname %>
-                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %>
-                  <%= cosme_comment.comment %>
-                  <% if cosme_comment.customer == current_customer %>
-                    <%= link_to cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class: "link2" do %>
-                      <i class="ri-delete-bin-7-line"></i>
-                    <% end %>
-                  <% end %></br>
-                <% end %>
+                <%= render "public/cosme_comments/comment", cosmetic: @cosmetic, cosme_comment: @cosme_comment %>
               </td>
             </tr>
 

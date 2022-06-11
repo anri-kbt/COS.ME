@@ -48,7 +48,7 @@ class Public::CosmeticsController < ApplicationController
   def show
     @cosmetic = Cosmetic.find(params[:id])
     @cosme_comment = CosmeComment.new
-    @cosme_comments=CosmeComment.all
+    @cosme_comments = CosmeComment.all
   end
 
   def edit

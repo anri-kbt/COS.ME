@@ -16,23 +16,13 @@
           <div class="cosmetic-row">
               <p class="cosmetic-name">
                 <%= link_to cosmetic_path(cosmetic.id),class:"text-dark" do %>
-                  <strong><i class="ri-vip-diamond-line"></i><span> <%=cosmetic.cosmetic_name %></span></strong>
+                  <strong><i class="ri-vip-diamond-line"></i><span><%=cosmetic.cosmetic_name %></span></strong>
                 <% end %>
               </p>
               <p style="font-size:small">説明：<%= cosmetic.introduction.truncate(15) %></p>
-              <% if cosmetic.favorited_by?(current_customer) %>
-              <span style="font-size:small">
-                <%= link_to cosmetic_favorites_path(cosmetic), method: :delete, remote: true, class:"text-dark" do %>
-                  <i class="ri-heart-3-fill"></i><%= cosmetic.favorites.count %> いいね
-                <% end %>
+              <span id="favorite_buttons_<%= cosmetic.id %>">
+                <%= render "public/favorites/favorite_buttons", cosmetic: cosmetic %>
               </span>
-              <% else %>
-              <span style="font-size:small">
-                <%= link_to cosmetic_favorites_path(cosmetic), method: :post, remote: true, class:"text-dark" do %>
-                  <i class="ri-heart-3-line"></i><%= cosmetic.favorites.count %> いいね
-                <% end %>
-              </span>
-              <% end %>
               <span> | </span>
               <span style="font-size:small"><%= link_to "#{cosmetic.cosme_comments.count} コメント", cosmetic_path(cosmetic.id), class:"text-dark" %></span>
           </div>
