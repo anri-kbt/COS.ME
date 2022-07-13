@@ -1,1 +1,1 @@
-$("tr#comment_<%= @cosme_comment.id %>").html("<%= j(render "public/cosme_comments/comment", cosmetic: @cosmetic) %>");
+$("tr#comment_<%= @cosme_comment.id %>").html("<%= j(render "public/cosme_comments/comment", cosmetic: @cosmetic, cosme_comment: @cosme_comment) %>");

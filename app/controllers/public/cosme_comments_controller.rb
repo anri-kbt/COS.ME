@@ -12,6 +12,7 @@ class Public::CosmeCommentsController < ApplicationController
   end
 
   def destroy
+    @cosme_comment = CosmeComment.find(params[:id])
     CosmeComment.find_by(id: params[:id], cosmetic_id: params[:cosmetic_id]).destroy
   end
 

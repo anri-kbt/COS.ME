@@ -1,4 +1,4 @@
-<% if cosmetic.favorited_by?(current_customer) %>
+<% if cosmetic.favorited_by?(cosmetic) %>
     <%= link_to cosmetic_favorites_path(cosmetic), method: :delete, remote: true, data: {"turbolinks" => false},class:"text-dark" do %>
       <i class="ri-heart-3-fill"></i><%= cosmetic.favorites.count %>
     <% end %>

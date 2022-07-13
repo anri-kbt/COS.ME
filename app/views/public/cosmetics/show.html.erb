@@ -65,7 +65,9 @@
                 <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
               </td>
               <td class="col-6">
-                <%= render "public/cosme_comments/comment", cosmetic: @cosmetic, cosme_comment: @cosme_comment %>
+                <div id="comment_area">
+                  <%= render "public/cosme_comments/comment", cosmetic: @cosmetic, cosme_comment: @cosme_comment %>
+                </div>
               </td>
             </tr>
 

@@ -1,9 +1,9 @@
-<%= form_with model:cosme_comment, url: [cosmetic, cosme_comment], id:"new_comment" ,local: false do |f| %>
+<%= form_with model: [cosmetic, cosme_comment], id:"new_comment" ,local: false do |f| %>
  <div class="form-group">
    <%= f.text_area :comment, method: :post, remote: true, data: {"turbolinks" => false}, id:"js-new-comment-body",row: '4',placeholder: "コメントをここに" %>
-   <input type="submit" value"送信する" class="button">
+   <!--input type="submit" value"送信する" class="button"-->
+   <%= f.submit '送信する', class:"button"%>
  </div>
- <%#= f.submit t('defaults.post'),class:"btn btn-primary"%>
 <% end %>
 <% cosmetic.cosme_comments.each do |cosme_comment| %>
   <span class="profile-image">
@@ -18,3 +18,10 @@
     <% end %></br>
   <% end %>
 <% end %>
+
+<%#= form_with(model:[@post, @comment], local: true) do |f| %>
+    <!--エラーメッセージ-->
+    <%#= render 'layouts/error_messages', model: f.object %>
+    <%#= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%#= f.submit "送信する" %>
+  <%# end %>
